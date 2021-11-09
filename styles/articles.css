@@ -1,0 +1,74 @@
+.product_container {
+    /* sätter marginal från topp på sidan */
+    margin-top: 5rem;
+    /* placerar innehållet i ett rutnät */
+    display: grid;
+    /* delar upp bredd i fraktioner av hemsidan */
+    grid-template-columns: 0.05fr 1fr 0.05fr 0.4fr 0.05fr;
+    /* förklarar vilken del som ska finnas vart på sidan */
+    grid-template-rows: 40px 100px 100px 100px 100px 400px;
+    grid-template-areas: 
+    ". . . . ."
+    ". image . content1 ."
+    ". image . content2 ."
+    ". image . content3 ."
+    ". image . content4 ."
+    ". . . . .";
+}
+
+/* sätter storlek på bilder */
+.box_pic img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    object-position: 0 40%;
+}
+
+.box_pic{
+    grid-area: image;
+    text-align: center;
+}
+
+/* tillkallnings funktioner för placering */
+
+.article1 {
+    background-color: white;
+    grid-area: content1;
+    padding: 40px;
+    line-height: 1.5;
+    border: solid 1px black;
+}
+
+.article2 {
+    grid-area: content2;
+    background-color: lightcoral;
+    padding: 40px;
+    line-height: 1.5;
+    border: solid 1px black;
+}
+
+.article3 {
+    background-color: lightpink;
+    grid-area: content3;
+    padding: 40px;
+    line-height: 1.5;
+    border: solid 1px black;
+}
+
+.article4 {
+    background-color: lightsalmon;
+    grid-area: content4;
+    padding: 40px;
+    line-height: 1.5;
+    border: solid 1px black;;
+}
+
+.product_container a {
+    text-align: left;
+    color: black;
+    text-decoration: none;
+}
+
+.box_pic:hover h2 {
+    text-decoration: underline;
+}

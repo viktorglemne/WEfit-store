@@ -1,0 +1,121 @@
+/* sätter position på innehåll i containern och en backgrundsfärg */
+nav {
+    top: 0;
+    display: flex;
+    justify-content: flex-start;
+    position: fixed;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    background-color: black;
+}
+
+/* hover och focus styling av knapp och text */
+
+.second_container a:hover, .menu_logo:hover {
+    filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
+}
+
+.first_container {
+    margin-left: 30px;
+}
+
+.second_container a {
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    margin: 10px;
+}
+
+.second_container {
+    margin-left: 30px;
+    height: auto;
+    width: auto;
+}
+
+.third_container a {
+    margin: 10px;
+}
+
+.third_container {
+    margin-left: auto;
+    margin-right: 30px;
+    height: auto;
+    width: auto;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* storlek och annan markör på loga */
+
+.logo {
+    width: 5rem;
+    cursor: pointer;
+}
+
+/* storlek och annan markör på loga */
+
+.menu_logo {
+    width: 1.6rem;
+    cursor: pointer;
+    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(108%) contrast(101%);
+}
+
+#cart a {
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+/* Ändrar marginaler och utförande på menyrad beroende på skärmstorlek */
+
+@media all and (max-width: 650px) {
+    nav li, nav a {
+        padding: 0 30px 0 30px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+}
+
+@media all and (max-width: 400px) {
+    nav li, nav a {
+        padding: 0 15px 0 5px;
+    }
+}
