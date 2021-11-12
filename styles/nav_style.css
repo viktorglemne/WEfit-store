@@ -7,7 +7,7 @@ nav {
     align-items: center;
     width: 100%;
     height: 5rem;
-    background-color: black;
+    background-color: rgb(10, 0, 95);
 }
 
 /* hover och focus styling av knapp och text */

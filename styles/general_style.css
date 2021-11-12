@@ -5,6 +5,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  margin-top: 5rem;
+}
+
 h1 {
   font-size: 3rem;
   font-weight: lighter;

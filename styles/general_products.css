@@ -4,8 +4,6 @@
 }
 
 .product_container {
-    /* sätter marginal från topp på sidan */
-    margin-top: 5rem;
     /* placerar innehållet i ett rutnät */
     display: grid;
     /* delar upp bredd i fraktioner av hemsidan */
