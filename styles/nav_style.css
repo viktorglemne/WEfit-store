@@ -12,7 +12,7 @@ nav {
 
 /* hover och focus styling av knapp och text */
 
-.second_container a:hover, .menu_logo:hover {
+.second_container a:hover, .menu_logo:hover, .third_container a:hover {
     filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
 }
 
@@ -36,6 +36,9 @@ nav {
 
 .third_container a {
     margin: 10px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: white;
 }
 
 .third_container {
@@ -95,10 +98,7 @@ nav {
     filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(108%) contrast(101%);
 }
 
-#cart a {
-    text-decoration: none;
-    font-size: 1.6rem;
-}
+
 
 /* Ändrar marginaler och utförande på menyrad beroende på skärmstorlek */
 

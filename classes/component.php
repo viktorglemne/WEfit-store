@@ -35,6 +35,11 @@ function Menu($titel)
     } else {
         $html = str_replace('--count--', "", $html);
     }
+
+    if (isset($_SESSION['username'])) {
+        $user = $_SESSION['username'];
+        $html = str_replace('Log In', $user, $html);
+    }
     echo $html;
 }
 

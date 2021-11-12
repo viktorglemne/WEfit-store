@@ -3,6 +3,7 @@
     margin-top: 5rem;
     /* placerar innehållet i ett rutnät */
     display: grid;
+    display: -ms-grid;
     /* delar upp bredd i fraktioner av hemsidan */
     grid-template-columns: 0.1fr 1fr 0.1fr 1fr 0.2fr;
     /* förklarar vilken del som ska finnas vart på sidan */
