@@ -3,13 +3,9 @@ session_start();
 
 require_once 'classes/config.php';
 require_once "classes/component.php";
-$titel = "Log in | WEfit Bäst på kosttilskott";
-$html_login = file_get_contents("html/login.html");
-menu($titel);
 
 try {
     if (!isset($_SESSION['username'])) {
-        echo $html_login;
         $userEmail = $_POST["email"];
         $userPass = $_POST["pass"];
         $stmt = $pdo->query("SELECT * FROM customer WHERE email='$userEmail' AND pass = '$userPass';");
@@ -18,8 +14,8 @@ try {
             $_SESSION['username'] = NULL;
             // throw new Exception('User not found');
         } else {
-            echo "You have successfully logged in as ", $row['email'];
-            $_SESSION["email"] = $row['id'];
+            $_SESSION["username"] = $userEmail;
+            header("location: userpage.php");
         }
     }
 } catch (\Throwable $e) {

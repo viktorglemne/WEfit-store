@@ -12,7 +12,7 @@ nav {
 
 /* hover och focus styling av knapp och text */
 
-.second_container a:hover, .menu_logo:hover, .third_container a:hover {
+.second_container a:hover, .third_container a:hover {
     filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
 }
 
