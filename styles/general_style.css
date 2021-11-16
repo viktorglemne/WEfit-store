@@ -28,3 +28,8 @@ p {
   font-size: 1rem;
   font-weight: lighter;
 }
+
+.error {
+  color: red;
+  font-weight: 400;
+}

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="styles/general_style.css">
 <link rel="stylesheet" href="styles/login.css">
-
+<!--===explode===-->
 <div class="login_form">
     <h1>Logga in</h1>
     <p>Du är inte inloggad, för att komma åt ditt konto behöver du logga in</p>
@@ -17,13 +17,16 @@
             <br>
             <input type="password" name="pass" size="20" required>
         </label><br><br>
+        <p class="error"><a></a></p>
+        <br>
         <input class="sub_button" type="submit" value="Log In!" name="skicka">
         <br>
         <a href="signup.php">Bli medlem</a>
     </form>
 </div>
 <!--===explode===-->
-<h1>Hello</h1>
-<p>Här är din profil</p>
-<button></button>
-<a href="logout.php"><img class="loginLogo" src="user-regular.svg" alt="user-account"> Logout</a>
+<div class="login_form">
+    <h1>Min profil</h1>
+    <h3>orderhistorik</h3>
+    <button><a href="logout.php">Logga ut</a></button>
+</div>

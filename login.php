@@ -12,7 +12,13 @@ try {
         $row = $stmt->fetch();
         if ($stmt->rowCount() < 1) {
             $_SESSION['username'] = NULL;
-            // throw new Exception('User not found');
+            $titel = "Log in | WEfit Bäst på kosttilskott";
+            menu($titel);
+            $html_login = file_get_contents("html/login.html");
+            $html_pieces = explode("<!--===explode===-->", $html_login);
+            $html_pieces[1] = str_replace('<a></a>', "Password or email did not match", $html_pieces[1]);
+            echo $html_pieces[0];
+            echo $html_pieces[1];
         } else {
             $_SESSION["username"] = $userEmail;
             header("location: userpage.php");

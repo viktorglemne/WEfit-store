@@ -8,14 +8,12 @@ menu($titel);
 $html_login = file_get_contents("html/login.html");
 $html_pieces = explode("<!--===explode===-->", $html_login);
 
-$html_pieces[0] = str_replace('', $name, $html_pieces[0]);
-
 function logIn()
 {
     require_once 'classes/config.php';
     try {
         if (!isset($_SESSION['username'])) {
-            echo $html_pieces[0];
+            // echo $html_pieces[10];
             $userEmail = $_POST["email"];
             $userPass = $_POST["pass"];
             $stmt = $pdo->query("SELECT * FROM customer WHERE email='$userEmail' AND pass = '$userPass';");
@@ -25,7 +23,7 @@ function logIn()
                 // throw new Exception('User not found');
             } elseif (isset($_SESSION['username'])) {
                 $_SESSION["username"] = $userEmail;
-                echo $html_pieces[1];
+                // echo $html_pieces[2];
             }
         }
     } catch (\Throwable $e) {
