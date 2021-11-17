@@ -4,17 +4,12 @@ session_start();
 
 require_once "classes/config.php";
 
-// if (isset($_POST['remove'])) {
-//     foreach ($_SESSION['cart'] as $key => $value) {
-//         if ($value["id"] == $_GET['id']) {
-//             unset($_SESSION['cart'][$key]);
-//         }
-//     }
-// }
+// ----------------------------------------------------------------------
 
-// echo '<pre>';
-// print_r($_SESSION);
-// echo '<br><br>';
+echo '<pre>';
+print_r($_SESSION);
+echo '<br><br>';
+echo '</pre>';
 // echo array_sum(array_map("count", $_SESSION['cart']));
 
 // echo '<br><br>';
@@ -25,6 +20,7 @@ require_once "classes/config.php";
 // echo "id in cart: ";
 // echo '<br>';
 // print_r(array_column($_SESSION['cart'], "id"));
+// print_r($_SESSION['cart'][0]['quantity']);
 
 // $test[] = array_column($_SESSION['cart'], "id");
 
@@ -44,6 +40,8 @@ require_once "classes/config.php";
 // echo '<br><br>';
 // echo '</pre>';
 
+// ----------------------------------------------------------------------
+
 require_once "classes/component.php";
 $titel = $row['name'] . "Varukorg | WEfit - Bäst på kosttillskott";
 menu($titel);
@@ -59,26 +57,25 @@ if (isset($_SESSION['cart'])) {
     $stmt->execute();
     // takes the fetched data and return it as a assite array
 
-
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         foreach ($product_id as $session_id) {
             if ($row['id'] == $session_id) {
                 $tmp1 = $html_pieces[1];
 
+                foreach ($_SESSION['cart'] as $value => $key) {
+                    if ($key['id'] == $row['id']) {
+                        $arrayName = $value;
+                        echo $arrayName;
+                    }
+                    break;
+                }
+
+                $quantity = $_SESSION['cart'][$arrayName]['quantity'];
                 $name = $row['name'];
                 $price = $row['price'];
                 $image = $row['image'];
-                
-                // foreach ($_SESSION['cart'] as &$value) {
-                //     if ($value['id'] === $session_id) {
-                //         $tmp2 = $html_pieces[2];
-            
-                //         $amount[] = $value['quantity'];
-            
-                //         $tmp2 = str_replace('--quantity--', "test", $tmp2);
-                //     }
-                // }
 
+                $tmp1 = str_replace('--quantity--', $quantity, $tmp1);
                 $tmp1 = str_replace('--image--', $image, $tmp1);
                 $tmp1 = str_replace('--name--', $name, $tmp1);
                 $tmp1 = str_replace('--price--', $price, $tmp1);
@@ -86,23 +83,10 @@ if (isset($_SESSION['cart'])) {
 
                 // echo out the assigned values for html_pieces
                 echo $tmp1;
-                // echo $tmp2;
             }
         }
     }
-
-    // foreach ($_SESSION['cart'] as &$value) {
-    //     if ($value['id'] === $session_id) {
-    //         $tmp2 = $html_pieces[2];
-
-    //         $amount[] = $value['quantity'];
-
-    //         $tmp2 = str_replace('--quantity--', array_sum($amount), $tmp2);
-    //         echo $tmp2;
-    //     }
-    // }
     
 } else {
     echo "Cart is Empty";
 }
-

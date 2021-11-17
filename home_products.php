@@ -37,42 +37,4 @@ foreach ($result as $row) {
 	echo $tmp;
 }
 
-if (isset($_POST["add_product"])) {
-	if (isset($_SESSION["shopping_cart"])) {
-		$product_array_id = array_column($_SESSION["shopping_cart"], "product_id");
-		if (!in_array($_GET["id"], $product_array_id)) {
-			$count = count($_SESSION["shopping_cart"]);
-			$products = array(
-				'item_id'		=>     $_GET["id"],
-				'item_name'		=>     $_POST["name_hidden"],
-				'item_price'	=>     $_POST["price_hidden"],
-				'item_quantity'	=>     $_POST["quantity_hidden"]
-			);
-			$_SESSION["shopping_cart"][$count] = $products;
-		} else {
-			echo "Item Already Added";
-			echo '<script>window.location="index.php"</script>';
-		}
-	} else {
-		$products = array(
-			'item_id'			=>     $_GET["id"],
-			'item_name'			=>     $_POST["name_hidden"],
-			'item_price'		=>     $_POST["price_hidden"],
-			'item_quantity'		=>     $_POST["quantity_hidden"]
-		);
-		$_SESSION["shopping_cart"][0] = $products;
-	}
-}
-if (isset($_GET["action"])) {
-	if ($_GET["action"] == "delete") {
-		foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-			if ($values["item_id"] == $_GET["id"]) {
-				unset($_SESSION["shopping_cart"][$keys]);
-				echo "Item Removed";
-				echo '<script>window.location="index.php"</script>';
-			}
-		}
-	}
-}
-
 echo $html_pieces[2];

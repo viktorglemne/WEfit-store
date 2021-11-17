@@ -47,7 +47,7 @@ function checkId($id)
 {
     foreach ($_SESSION['cart'] as &$value) {
         if ($value['id'] === $id) {
-            $check_id = $value['id'];
+            $checkId = $value['id'];
         }
     }
 }
@@ -57,7 +57,7 @@ function checkQuantity($id)
 {
     foreach ($_SESSION['cart'] as &$value) {
         if ($value['id'] === $id) {
-            $quantity[] = $value['quantity'];
+            $quantity = $value['quantity'];
         }
     }
 }
