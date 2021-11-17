@@ -20,14 +20,18 @@ $price = $row['price'];
 $image = $row['image'];
 $rowId = $row['id'];
 
+$myfile = fopen("descriptions/". $name .".txt", "r") or die("Unable to open file!");
+$file = fread($myfile, filesize("descriptions/". $name .".txt"));
+
+$html = str_replace('--description-text--', $file, $html);
 $html = str_replace('--image--', $image, $html);
 $html = str_replace('--name--', $name, $html);
 $html = str_replace('--price--', $price, $html);
 $html = str_replace('--id--', $rowId, $html);
-$html = str_replace('--description-text--', "snögg", $html);
 
 
 // ----------------------------------------------------------------------
+
 // echo '<pre>';
 // print_r($_SESSION);
 // echo '<br><br>';
@@ -129,7 +133,6 @@ if (isset($_POST['add'])) {
                     }
                 }
             }
-            
         } else {
             $id = $_POST['id'];
             $quantity = $_POST['quantity'];

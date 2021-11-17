@@ -6,10 +6,10 @@ require_once "classes/config.php";
 
 // ----------------------------------------------------------------------
 
-echo '<pre>';
-print_r($_SESSION);
-echo '<br><br>';
-echo '</pre>';
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '<br><br>';
+// echo '</pre>';
 // echo array_sum(array_map("count", $_SESSION['cart']));
 
 // echo '<br><br>';
@@ -37,8 +37,12 @@ echo '</pre>';
 // echo '<br>';
 // print_r($quantity);
 
-// echo '<br><br>';
-// echo '</pre>';
+echo '<br><br>';
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
+
 
 // ----------------------------------------------------------------------
 
@@ -60,14 +64,12 @@ if (isset($_SESSION['cart'])) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         foreach ($product_id as $session_id) {
             if ($row['id'] == $session_id) {
-                $tmp1 = $html_pieces[1];
+                $tmp = $html_pieces[1];
 
                 foreach ($_SESSION['cart'] as $value => $key) {
                     if ($key['id'] == $row['id']) {
                         $arrayName = $value;
-                        echo $arrayName;
                     }
-                    break;
                 }
 
                 $quantity = $_SESSION['cart'][$arrayName]['quantity'];
@@ -75,18 +77,18 @@ if (isset($_SESSION['cart'])) {
                 $price = $row['price'];
                 $image = $row['image'];
 
-                $tmp1 = str_replace('--quantity--', $quantity, $tmp1);
-                $tmp1 = str_replace('--image--', $image, $tmp1);
-                $tmp1 = str_replace('--name--', $name, $tmp1);
-                $tmp1 = str_replace('--price--', $price, $tmp1);
-                $tmp1 = str_replace('--id--', $session_id, $tmp1);
+                $tmp = str_replace('--quantity--', $quantity, $tmp);
+                $tmp = str_replace('--image--', $image, $tmp);
+                $tmp = str_replace('--name--', $name, $tmp);
+                $tmp = str_replace('--price--', $price, $tmp);
+                $tmp = str_replace('--id--', $session_id, $tmp);
 
                 // echo out the assigned values for html_pieces
-                echo $tmp1;
+                echo $tmp;
             }
         }
     }
-    
+    echo $html_pieces[2];
 } else {
-    echo "Cart is Empty";
+    echo $html_pieces[3];
 }

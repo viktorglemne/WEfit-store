@@ -1,10 +1,27 @@
-<link rel="stylesheet" href="styles/cart.css">
-<script></script>
-
+<link rel="stylesheet" href="styles/cart copy.css">
 <div class="product_container">
+    <h2>Varukorg</h2>
+    <!--===explode===-->
+    <div class="cart_item">
+        <form action="remove.php" method="POST">
+            <div class="image">
+                <img src="--image--" alt="Bild saknas!">
+            </div>
+            <div class="text">
+                <p>--name-- --price-- Kr</p>
+                <p>--quantity-- st</p>
+                <button type="submit" name="decrease">-</button>
+                <button type="submit" name="increase">+</button>
+                <input type="hidden" name="id" value="--id--">
+                <br>
+                <button type="submit" name="remove">Ta bort</button>
+            </div>
+        </form>
+        <hr>
+    </div>
+    <!--===explode===-->
     <div class="heading">
         <h3>Uppgifter</h3>
-        <h3>Artiklar</h3>
     </div>
     <div class="content">
         <div class="info">
@@ -20,24 +37,9 @@
             <hr>
             <button type="submit" class="payout">Till betalning</button>
         </div>
-        <!--===explode===-->
-
-        <div class="cart_item">
-            <form action="remove.php" method="post">
-                <div class="image">
-                    <img src="--image--" alt="Bild saknas!">
-                </div>
-                <div class="text">
-                    <p>--name-- --price-- Kr</p>
-                    <p>--quantity-- st</p>
-                    <button name="decrease">-</button>
-                    <button name="increase">+</button>
-                    <input type="hidden" name="id" value="--id--">
-                    <br>
-                    <button type="submit" name="remove">Ta bort</button>
-                </div>
-            </form>
-            <hr>
-        </div>
+    </div>
+    <!--===explode===-->
+    <div class="empty">
+        <p>Varukorgen är tom</p>
     </div>
 </div>

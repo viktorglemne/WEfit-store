@@ -5,7 +5,7 @@
     /* delar upp bredd i fraktioner av hemsidan */
     grid-template-columns: 0.1fr 1fr 0.1fr 1fr 0.2fr;
     /* förklarar vilken del som ska finnas vart på sidan */
-    grid-template-rows: 50px 100px 50px 100px 100px 400px;
+    grid-template-rows: 50px 100px 50px 200px 100px 400px;
     grid-template-areas: ". . . . ."
     ". image . content1 ."
     ". image . content2 ."
@@ -50,7 +50,7 @@
 .description {
     background-color: lightpink;
     grid-area: content3;
-    padding: 40px;
+    padding: 20px;
     line-height: 1.5;
     border: solid 1px black;
 }
