@@ -112,6 +112,8 @@ $html = str_replace('--id--', $rowId, $html);
 // echo '<br><br>';
 // echo '<pre>';
 // print_r($_SESSION);
+// echo '<br><br>';
+// echo count($_SESSION['cart']);
 // echo '</pre>';
 
 // ----------------------------------------------------------------------

@@ -37,10 +37,10 @@ require_once "classes/config.php";
 // echo '<br>';
 // print_r($quantity);
 
-echo '<br><br>';
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+// echo '<br><br>';
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '</pre>';
 
 
 
