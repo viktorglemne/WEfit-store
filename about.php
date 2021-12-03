@@ -14,3 +14,7 @@ echo $html;
 echo $html_pieces[0];
 echo $html_pieces[1];
 echo $html_pieces[2];
+
+
+$footer = file_get_contents("html/footer.html");
+echo $footer;

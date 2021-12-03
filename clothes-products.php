@@ -1,17 +1,15 @@
 <?php
 session_start();
 // index-file and frontpage
-require_once "classes/config.php";
 require_once "classes/component.php";
-
-$titel = "Produkter hos WEfit | Bäst på kosttilskott";
-$html_products = file_get_contents("html/general_products.html");
+$titel = "Kläder hos WEfit | Bäst på kosttilskott";
+$html_products = file_get_contents("html/products.html");
 $html_pieces = explode("<!--===explode===-->", $html_products);
 menu($titel);
 echo $html_pieces[0];
 
-
-$stmt = $pdo->prepare("SELECT * FROM products");
+require_once "classes/config.php";
+$stmt = $pdo->prepare("SELECT * FROM products WHERE category = 'clothes'");
 $stmt->execute();
 // takes the fetched data and return it as a assite array
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -20,7 +18,7 @@ $result = $stmt->fetchAll();
 // iterates through an array where the value of the element gets assigned to the variable
 foreach ($result as $row) {
 
-	$tmp = $html_pieces[1];
+	$tmp = $html_pieces[2];
 
 	$id = $row['id'];
 	$name = $row['name'];
@@ -33,8 +31,17 @@ foreach ($result as $row) {
 	$tmp = str_replace('--image--', $image, $tmp);
 	$tmp = str_replace('--id--', $id, $tmp);
 
-	// echo out the assigned values for html_pieces
-	echo $tmp;
+	if ($id % 4 == 0) {
+		$tmp = str_replace('<!---', " ", $tmp);
+		$tmp = str_replace('--->', " ", $tmp);
+		echo $tmp;
+	} else {
+		// echo out the assigned values for html_pieces
+		echo $tmp;
+	}
 }
 
-echo $html_pieces[2];
+echo $html_pieces[3];
+
+$footer = file_get_contents("html/footer.html");
+echo $footer;

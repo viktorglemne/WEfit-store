@@ -162,3 +162,6 @@ if (isset($_POST['add'])) {
         header("Location: description.php?id=$rowId");
     }
 }
+
+$footer = file_get_contents("html/footer.html");
+echo $footer;

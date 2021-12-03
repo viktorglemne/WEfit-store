@@ -37,41 +37,56 @@ require_once "classes/config.php";
 // echo '<br>';
 // print_r($quantity);
 
-// echo '<br><br>';
-// echo '<pre>';
-// print_r($_SESSION);
-// echo '</pre>';
+echo '<br><br>';
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
 
+echo '<br><br>';
+echo '<pre>';
+print_r(array_column($_SESSION['cart'], 'id'));
+echo '</pre>';
 
 
 // ----------------------------------------------------------------------
 
+// import information from compontets 
 require_once "classes/component.php";
-$titel = $row['name'] . "Varukorg | WEfit - Bäst på kosttillskott";
+// sets titel of the webpage
+$titel = "Varukorg | WEfit - Bäst på kosttillskott";
+// calls for menu class to show to menu
 menu($titel);
 
+// sets content from html documnet in varaible
 $html_products = file_get_contents("html/cart.html");
+// splits html documnet in pieces
 $html_pieces = explode("<!--===explode===-->", $html_products);
 echo $html_pieces[0];
 
+// check if session cart been set.
+// shows all products if there is any in cart otherwise display that cart i empty 
 if (isset($_SESSION['cart'])) {
+    // create a variable with a arry of all id values that exist in session cart array.
     $product_id = array_column($_SESSION['cart'], 'id');
 
+    // fetch all values from products table in database
     $stmt = $pdo->prepare("SELECT * FROM products");
     $stmt->execute();
     // takes the fetched data and return it as a assite array
-
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // loops through product_id 
         foreach ($product_id as $session_id) {
+            // if value of id is the same as in the cart array then do something
             if ($row['id'] == $session_id) {
+                // echo first pice of information from html documnet
                 $tmp = $html_pieces[1];
-
+                // through session cart arry to find array name where id exist
                 foreach ($_SESSION['cart'] as $value => $key) {
                     if ($key['id'] == $row['id']) {
                         $arrayName = $value;
                     }
                 }
-
+                // vaule about product and quantity in varibels and replace placeholders in html documnet
                 $quantity = $_SESSION['cart'][$arrayName]['quantity'];
                 $name = $row['name'];
                 $price = $row['price'];
@@ -88,7 +103,12 @@ if (isset($_SESSION['cart'])) {
             }
         }
     }
+    // display information part from html document
     echo $html_pieces[2];
 } else {
+    // display that cart is empty if session cart not been set
     echo $html_pieces[3];
 }
+
+$footer = file_get_contents("html/footer.html");
+echo $footer;

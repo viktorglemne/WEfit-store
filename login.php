@@ -27,3 +27,7 @@ try {
 } catch (\Throwable $e) {
     echo $e->getMessage();
 }
+
+
+$footer = file_get_contents("html/footer.html");
+echo $footer;

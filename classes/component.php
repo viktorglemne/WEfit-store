@@ -26,7 +26,7 @@ function cartElement($productimg, $productname, $productprice, $productid)
 
 function Menu($titel)
 {
-    $html = file_get_contents("html/header.html");
+    $html = file_get_contents("html/navBar.html");
     $html = str_replace('--Titel--', $titel, $html);
 
     if (isset($_SESSION['cart'])) {
