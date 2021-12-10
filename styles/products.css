@@ -16,13 +16,13 @@
     border-radius: 30px;
 }
 
-.product_container a {
+.product a {
     color: black;
     text-decoration: none;
 }
 
 /* sätter storlek på bilder */
-.product_container img {
+.product img {
     width: 30vh;
     height: 80%;
     object-fit: scale-down;

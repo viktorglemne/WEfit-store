@@ -37,15 +37,15 @@ require_once "classes/config.php";
 // echo '<br>';
 // print_r($quantity);
 
-echo '<br><br>';
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+// echo '<br><br>';
+// echo '<pre>';
+// print_r($_SESSION);
+// echo '</pre>';
 
-echo '<br><br>';
-echo '<pre>';
-print_r(array_column($_SESSION['cart'], 'id'));
-echo '</pre>';
+// echo '<br><br>';
+// echo '<pre>';
+// print_r(array_column($_SESSION['cart'], 'id'));
+// echo '</pre>';
 
 
 // ----------------------------------------------------------------------
@@ -104,7 +104,24 @@ if (isset($_SESSION['cart'])) {
         }
     }
     // display information part from html document
-    echo $html_pieces[2];
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $stmt = $pdo->prepare("SELECT * FROM `customer` WHERE `email` = '$username'");
+        $stmt->execute();
+        // takes the fetched data and return it as a assite array
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $tmp = $html_pieces[2];
+        $tmp = str_replace('id="--adress--"', "value=".$row['adress'], $tmp);
+        $tmp = str_replace('id="--post--"', "value=".$row['postnr'], $tmp);
+        $tmp = str_replace('id="--ort--"', "value=".$row['ort'], $tmp);
+        $tmp = str_replace('id="--mail--"', "value=".$row['email'], $tmp);
+        $tmp = str_replace('id="--phone--"', "value=".$row['telefonnr'], $tmp);
+
+        echo $tmp;
+    } else {
+        echo $html_pieces[2];
+    }
 } else {
     // display that cart is empty if session cart not been set
     echo $html_pieces[3];

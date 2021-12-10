@@ -120,7 +120,9 @@ $html = str_replace('--id--', $rowId, $html);
 
 echo $html;
 
+// check that add been set
 if (isset($_POST['add'])) {
+    // check that cart been set
     if (isset($_SESSION['cart'])) {
         $item_array_id = array_column($_SESSION['cart'], "id");
         $item_array_quantity = array_column($_SESSION['cart'], "quantity");

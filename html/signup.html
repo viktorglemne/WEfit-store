@@ -4,20 +4,44 @@
     <h1>Bli Medlem</h1>
     <p>Fyll i formuläret för att bli en del av WEfit </p>
     <br>
-    <form action="login.php" method="post">
+    <form action="signup.php" method="post">
         <label>
             Epost *
             <br>
             <input type="email" name="email" size="20" required>
+            <!--- <p class="error" >Email already exists</p> --->
         </label>
         <br><br>
         <label>
             Lösenord *
             <br>
             <input type="password" name="pass" size="20" required>
-        </label><br><br>
-        <input class="sub_button" type="submit" value="Log In!" name="skicka">
-        <br>
-        <a href="signup.php">Bli medlem</a>
+        </label>
+        <br><br>
+        <label>
+            Adress *
+            <br>
+            <input type="text" name="adress" size="40" required>
+        </label>
+        <br><br>
+        <label>
+            Postnummer *
+            <br>
+            <input type="text" name="postnr" size="20" required>
+        </label>
+        <br><br>
+        <label>
+            Ort *
+            <br>
+            <input type="text" name="ort" size="20" required>
+        </label>
+        <br><br>
+        <label>
+            Telefonnummer *
+            <br>
+            <input type="tel" name="telefonnr" size="20" required>
+        </label>
+        <br><br>
+        <input class="sub_button" type="submit" value="Bli Medlem!" name="skicka">
     </form>
 </div>

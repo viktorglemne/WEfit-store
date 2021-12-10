@@ -1,0 +1,42 @@
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.parent img {
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+    object-position: 0 40%;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 20px;
+}
+
+.child {
+    flex-grow: 1;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.header-text-one {
+    position: absolute;
+    top: 10rem;
+    left: 50px;
+    z-index: 1;
+}
+
+.header-text-two {
+    position: absolute;
+    top: 14rem;
+    left: 80px;
+    z-index: 1;
+}
+
+.header-text-two h1, .header-text-one h1 {
+    font-size: 60px;
+    color: white;
+}
+

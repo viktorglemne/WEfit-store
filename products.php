@@ -19,32 +19,6 @@ $result = $stmt->fetchAll();
 
 echo $html_pieces[1];
 
-// iterates through an array where the value of the element gets assigned to the variable
-foreach ($result as $row) {
-
-	$tmp = $html_pieces[2];
-
-	$id = $row['id'];
-	$name = $row['name'];
-	$price = $row['price'];
-	$image = $row['image'];
-
-	$tmp = str_replace("--description_page--", "description.php?id=$id", $tmp);
-	$tmp = str_replace('--name--', $name, $tmp);
-	$tmp = str_replace('--price--', $price, $tmp);
-	$tmp = str_replace('--image--', $image, $tmp);
-	$tmp = str_replace('--id--', $id, $tmp);
-
-	if ($id % 4 == 0) {
-		$tmp = str_replace('<!---', " ", $tmp);
-		$tmp = str_replace('--->', " ", $tmp);
-		echo $tmp;
-	} else {
-		// echo out the assigned values for html_pieces
-		echo $tmp;
-	}
-}
-
 echo $html_pieces[3];
 
 $footer = file_get_contents("html/footer.html");
