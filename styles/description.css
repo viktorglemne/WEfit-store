@@ -5,14 +5,14 @@
     /* delar upp bredd i fraktioner av hemsidan */
     grid-template-columns: 0.1fr 1fr 0.1fr 1fr 0.2fr;
     /* förklarar vilken del som ska finnas vart på sidan */
-    grid-template-rows: 50px 100px 50px 200px 100px 400px;
+    grid-template-rows: 50px 100px 50px 150px 100px 100px;
     grid-template-areas: ". . . . ."
-    ". image . content1 ."
-    ". image . content2 ."
-    ". image . content3 ."
-    ". image . content4 ."
-    ". info info info ."
-    ". . . . .";
+        ". image . content1 ."
+        ". image . content2 ."
+        ". image . content3 ."
+        ". image . content4 ."
+        ". info info info ."
+        ". . . . .";
 }
 
 /* sätter storlek på bilder */
@@ -34,34 +34,26 @@
 .heading {
     background-color: white;
     grid-area: content1;
-    padding: 40px;
+    padding: 20px;
     line-height: 1.5;
-    border: solid 1px black;
 }
 
 .price {
     grid-area: content2;
-    background-color: lightcoral;
-    padding-left: 40px;
+    padding-left: 20px;
     line-height: 1.5;
-    border: solid 1px black;
 }
 
 .description {
-    background-color: lightpink;
     grid-area: content3;
     padding: 20px;
     line-height: 1.5;
-    border: solid 1px black;
 }
 
 .post {
-    background-color: lightsalmon;
     grid-area: content4;
-    padding: 40px;
+    padding: 20px;
     line-height: 1.5;
-    border: solid 1px black;
-    ;
 }
 
 .product_container a {
@@ -98,8 +90,12 @@
     margin-right: 15px;
     padding-left: 20px;
     border: 1px solid #eee;
-  }
-  
-  input[type=number]::-webkit-inner-spin-button {
+}
+
+input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
-  }
+}
+
+li {
+    font-weight: 300;
+}

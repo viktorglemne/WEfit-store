@@ -1,8 +1,3 @@
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet voluptate soluta nisi,
-veritatis impedit a modi quia animi velit assumenda natus ratione sit quibusdam voluptatibus 
-incidunt dolores quod est! Voluptates quam aperiam similique assumenda iure delectus voluptatibus
-obcaecati numquam unde adipisci voluptas labore modi, ipsa iusto sint quaerat debitis dolores 
-expedita consequuntur repellat. Quidem perferendis ad dolore placeat ipsa deserunt nobis 
-accusamus velit dolor nemo similique, debitis, deleniti doloremque reiciendis eveniet quod veritatis
-quaerat ipsum nesciunt. Maiores fugiat, incidunt ex assumenda placeat, ducimus eos deleniti laborum, 
-est adipisci expedita. Velit vero sunt enim quam, quae perspiciatis ex libero nemo maxime.
+<h4>Den bästa återhämtningen som magen kan få, ta en skopa WEfit-after strax efter ett träningspass för att hålla energin på topp</h4>
+<li>15 doser</li>
+<li>300kcal/dos</li>

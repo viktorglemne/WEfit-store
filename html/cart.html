@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="styles/cart.css">
+<br><br>
+<!--===explode===-->
 <div class="product_container">
     <h2>Varukorg</h2>
     <!--===explode===-->
-    <div class="cart_item">
-        <form action="remove.php" method="POST">
+    <form action="action.php" method="POST">
+        <div class="cart_item">
             <div class="image">
                 <img src="--image--" alt="Bild saknas!">
             </div>
@@ -16,35 +18,58 @@
                 <br>
                 <button type="submit" name="remove">Ta bort</button>
             </div>
-        </form>
-        <hr>
-    </div>
-    <!--===explode===-->
-    <div class="heading">
+            <br>
+    </form>
+</div>
+
+<!--===explode===-->
+<br>
+<h4>Summa varor: --total--.00 kr</h4>
+<br>
+<hr>
+
+<!--===explode===-->
+<div class="heading">
+    <br>
+    <h3>Uppgifter</h3>
+</div>
+<div class="content">
+    <div class="info">
+        <h4>Adress</h4>
+        <input id="--adress--" type="text">
+        <h4>Postnummer</h4>
+        <input id="--post--" type="text">
+        <h4>Ort</h4>
+        <input id="--ort--" type="text">
+        <h4>Mail</h4>
+        <input id="--mail--" type="text">
+        <h4>Telefonnummer</h4>
+        <input id="--phone--" type="text">
         <br>
-        <h3>Uppgifter</h3>
+        <br>
+        <hr>
+        <br>
+
     </div>
-    <div class="content">
-        <div class="info">
-            <h4>Adress</h4>
-            <input id="--adress--" type="text">
-            <h4>Postnummer</h4>
-            <input id="--post--" type="text">
-            <h4>Ort</h4>
-            <input id="--ort--" type="text">
-            <h4>Mail</h4>
-            <input id="--mail--" type="text">
-            <h4>Telefonnummer</h4>
-            <input id="--phone--" type="text">
-            <br>
-            <br>
-            <hr>
-            <br>
-            <button type="submit" class="payout">Till betalning</button>
-        </div>
-    </div>
-    <!--===explode===-->
+    <form action="action.php" method="POST">
+        <button type="submit" name="order">Till betalning</button>
+    </form>
+</div>
+</div>
+<!--===explode===-->
+</div>
+<div class="empty_container">
+    <h2>Varukorg</h2>
     <div class="empty">
         <p>Varukorgen är tom</p>
     </div>
 </div>
+
+<!--===explode===-->
+</div>
+<div class="order_container">
+    <h2>Ordern är genomförd</h2>
+</div>
+
+
+</body>

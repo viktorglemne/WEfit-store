@@ -29,6 +29,10 @@
     object-position: 0;
 }
 
+.product hr {
+    border: 0.15px solid rgb(185, 185, 185);
+}
+
 /* tillkallnings funktioner för placering */
 
 .heading {

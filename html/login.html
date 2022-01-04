@@ -1,32 +1,45 @@
-<link rel="stylesheet" href="styles/general_style.css">
 <link rel="stylesheet" href="styles/login.css">
+<script src="/charts.js"></script>
 <!--===explode===-->
-<div class="login_form">
-    <h1>Logga in</h1>
-    <p>Du är inte inloggad, för att komma åt ditt konto behöver du logga in</p>
-    <br>
-    <form action="login.php" method="post">
-        <label>
-            Epost *
-            <br>
-            <input type="email" name="email" size="20" required>
-        </label>
-        <br><br>
-        <label>
-            Lösenord *
-            <br>
-            <input type="password" name="pass" size="20" required>
-        </label><br><br>
-        <p class="error"><a></a></p>
+<div class="loginpage_content">
+    <div class="login_form">
+        <h1>Logga in</h1>
+        <p>Du är inte inloggad, för att komma åt ditt konto behöver du logga in</p>
         <br>
-        <input class="sub_button" type="submit" value="Log In!" name="skicka">
-        <br>
-        <a href="signup.php">Bli medlem</a>
-    </form>
+        <form action="login.php" method="post">
+            <label>
+                Epost *
+                <br>
+                <input type="email" name="email" size="20" required>
+            </label>
+            <br><br>
+            <label>
+                Lösenord *
+                <br>
+                <input type="password" name="pass" size="20" required>
+            </label><br><br>
+            <p class="error"><a></a></p>
+            <br>
+            <input class="sub_button" type="submit" value="Log In!" name="skicka">
+            <br>
+            <a href="signup.php">Bli medlem</a>
+        </form>
+    </div>
 </div>
 <!--===explode===-->
-<div class="login_form">
-    <h1>Min profil</h1>
-    <h3>orderhistorik</h3>
-    <button><a href="logout.php">Logga ut</a></button>
+<link rel="stylesheet" href="styles/cart.css">
+<h1>Min profil</h1>
+<h3>orderhistorik</h3>
+<hr><br>
+<!--===explode===-->
+<div class="cart_item">
+    <div class="image">
+        <img src="--image--" alt="Bild saknas!">
+    </div>
+    <div class="text">
+        <p>--name-- --price-- Kr</p>
+    </div>
 </div>
+<hr><br>
+<!--===explode===-->
+<button><a href="logout.php">Logga ut</a></button>

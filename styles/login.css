@@ -1,9 +1,16 @@
+.loginpage_content {
+    margin-top: 8rem;
+}
+.userpage_content {
+    margin-top: 8rem;
+}
+
 .login_form {
     max-width: 45rem;
     padding: 2rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 8rem;
+    margin-top: 2rem;
     background-color: rgb(233, 233, 233);
     border-radius: 10px;
 }
