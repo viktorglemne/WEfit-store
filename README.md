@@ -16,7 +16,7 @@
 
 </div>
 
-This is one of the first PHP project i been doing. 
+This is one of the first PHP project i have done. 
 
 It contains relative basic concept of PHP but have a strict structure between html, php and css. All syntaxes are separated in different files for a more clarity in the code and to be more readable.
 
