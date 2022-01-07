@@ -7,7 +7,7 @@ nav {
     align-items: center;
     width: 100%;
     height: 5rem;
-    background-color: rgb(10, 0, 95);
+    background-color: #0a005f;
 }
 
 .second_container a:hover, .third_container a:hover {
@@ -84,7 +84,7 @@ nav {
 /* storlek och annan markör på loga */
 
 .logo {
-    width: 5rem;
+    width: 6rem;
     cursor: pointer;
 }
 
@@ -96,26 +96,71 @@ nav {
     filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(323deg) brightness(108%) contrast(101%);
 }
 
+.social-logo {
+    width: 2rem;
+    cursor: pointer;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(70deg) brightness(99%) contrast(107%);
+}
+
 /* ---------------------------------------------------- */
 /* -----------------------FOOTER----------------------- */
 /* ---------------------------------------------------- */
 
 footer {
-    width: 100%;
-    height: 15rem;
-    padding: 15px;
+    background-color: #232323;
     margin-top: 2rem;
-    background-color: lightgray;
-    bottom: 0px;
-    display: flex;
-    justify-content: flex-start;
+    height: auto;
+    color: #ffff;
     z-index: 2;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer img {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-content-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-content-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-   
+}
+
+.footer-item {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.logo-social {
+    display: flex;
+    flex-direction: row;
+}
+
+.social {
+    padding: 10px;
 }
 
 footer hr {
-    border: 0.5px solid rgb(185, 185, 185);
+    border: none;
+    height: 0.10px;
+    /* Set the hr color */
+    color: #5C5C5C;
+    /* old IE */
+    background-color: #5C5C5C;
+    /* Modern Browsers */
+    margin: 0.5% 5% 0.5% 5%;
 }
 
 /* Ändrar marginaler och utförande på menyrad beroende på skärmstorlek */
