@@ -3,7 +3,7 @@
     flex-wrap: wrap;
 }
 
-.parent img {
+#bakground {
     width: 100%;
     height: 75vh;
     object-fit: cover;
@@ -18,7 +18,19 @@
 .child {
     flex-grow: 1;
     text-align: center;
-    border: 1px solid black;
+}
+
+#logo-info {
+    width: 10%;
+}
+
+.info {
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    flex-direction: row;
+    line-height: 1.5;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 20px;
 }
 
 .header-text-one {

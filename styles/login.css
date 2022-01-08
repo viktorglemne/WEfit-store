@@ -15,6 +15,11 @@
     border-radius: 10px;
 }
 
+.member {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
 input, textarea {
     width: 100%;
     padding: 10px;

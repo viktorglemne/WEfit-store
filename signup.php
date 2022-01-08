@@ -3,33 +3,33 @@ session_start();
 
 require_once 'classes/config.php';
 require_once "classes/component.php";
+$titel = "Bli medlem | WEfit Bäst på kosttilskott";
+menu($titel);
+$html_signup = file_get_contents("html/signup.html");
+$html_pieces = explode("<!--===explode===-->", $html_signup);
 
 try {
     if (!isset($_SESSION['username'])) {
         $USER = $_POST["email"];
-        $PASS = $_POST["pass"];
-        $ADRESS = $_POST["adress"];
-        $POSTNR = $_POST["postnr"];
-        $ORT = $_POST["ort"];
-        $PHONE = $_POST["telefonnr"];
+        $PASS = $_POST["password"];
+        $ADRESS = $_POST["address"];
+        $POSTNR = $_POST["zipcode"];
+        $ORT = $_POST["state"];
+        $TELE = $_POST["phonenumber"];
         $stmt = $pdo->query("SELECT * FROM `customer` WHERE `email` = '$USER'");
 
         if ($stmt->rowCount() > 0) {
-            $titel = "Bli medlem | WEfit Bäst på kosttilskott";
-            menu($titel);
-            $html_signup = file_get_contents("html/signup.html");
-            $html_signup = str_replace('<!---', "", $html_signup);
-            $html_signup = str_replace('--->', "", $html_signup);
-            echo $html_signup;
+            $html_pieces[1] = str_replace('<!---', "", $html_pieces[1]);
+            $html_pieces[1] = str_replace('--->', "", $html_pieces[1]);
+            echo $html_pieces[0];
+            echo $html_pieces[1];
         } else {
-            $titel = "Bli medlem | WEfit Bäst på kosttilskott";
-            menu($titel);
-            $html_signup = file_get_contents("html/signup.html");
-            echo $html_signup;
-            $sql = "INSERT INTO `customer`(`email`, `pass`, `adress`, `postnr`, `ort`, `telefonnr`, `admin`) VALUES ('$USER','$PASS','$ADRESS','$POSTNR','$ORT','$PHONE',0)";
+            $sql = "INSERT INTO `customer`(`email`, `password`, `address`, `zipcode`, `state`, `phonenumber`, `admin`) VALUES ('$USER','$PASS','$ADRESS','$POSTNR','$ORT','$TELE',0)";
             $result = $pdo->query($sql);
-            header("location: signup.php");
-            header("location: login.php");
+            $html_pieces[2] = str_replace('--email--', $USER, $html_pieces[2]);
+            $html_pieces[2] = str_replace('--pass--', $PASS, $html_pieces[2]);
+            echo $html_pieces[0];
+            echo $html_pieces[2];
         }
     } else {
         $_SESSION["username"] = $USER;

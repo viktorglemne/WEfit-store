@@ -7,8 +7,8 @@ require_once "classes/component.php";
 try {
     if (!isset($_SESSION['username'])) {
         $USER = $_POST["email"];
-        $PASS = $_POST["pass"];
-        $stmt = $pdo->query("SELECT * FROM customer WHERE email='$USER' AND pass = '$PASS';");
+        $PASS = $_POST["password"];
+        $stmt = $pdo->query("SELECT * FROM customer WHERE email='$USER' AND password = '$PASS';");
         
         if ($stmt->rowCount() < 1) {
             $_SESSION['username'] = NULL;

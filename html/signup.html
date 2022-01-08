@@ -1,6 +1,8 @@
-<link rel="stylesheet" href="styles/general_style.css">
-<link rel="stylesheet" href="styles/login.css">
-<div class="login_form">
+<link rel="stylesheet" href="./styles/login.css">
+<link rel="stylesheet" href="./styles/general_style.css">
+<!--===explode===-->
+
+<div class="login_form member">
     <h1>Bli Medlem</h1>
     <p>Fyll i formuläret för att bli en del av WEfit </p>
     <br>
@@ -15,33 +17,46 @@
         <label>
             Lösenord *
             <br>
-            <input type="password" name="pass" size="20" required>
+            <input type="password" name="password" size="20" required>
         </label>
         <br><br>
         <label>
             Adress *
             <br>
-            <input type="text" name="adress" size="40" required>
+            <input type="text" name="address" size="40" required>
         </label>
         <br><br>
         <label>
             Postnummer *
             <br>
-            <input type="text" name="postnr" size="20" required>
+            <input type="text" name="zipcode" size="20" required>
         </label>
         <br><br>
         <label>
             Ort *
             <br>
-            <input type="text" name="ort" size="20" required>
+            <input type="text" name="state" size="20" required>
         </label>
         <br><br>
         <label>
             Telefonnummer *
             <br>
-            <input type="tel" name="telefonnr" size="20" required>
+            <input type="tel" name="phonenumber" size="20" required>
         </label>
         <br><br>
         <input class="sub_button" type="submit" value="Bli Medlem!" name="skicka">
     </form>
+</div>
+<!--===explode===-->
+<div class="login_form success">
+    <img src="./content_images/svg_icon/party-poper.svg" alt="">
+    <h1>Succé!</h1>
+    <p>Gratulerar ditt konto har blivit registrerat!</p>
+    <br>
+    <form action="login.php" method="post">
+            <input type="hidden" name="email" value="--email--">
+            <input type="hidden" name="password" value="--pass--">
+        <input class="sub_button" type="submit" value="Log In!" name="skicka">
+    </form>
+</div>
 </div>

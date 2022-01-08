@@ -38,3 +38,14 @@ p {
   color: red;
   font-weight: 400;
 }
+
+.success {
+  margin-top: 8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.success h1 {
+  font-weight: 400;
+  color: green;
+}
+
