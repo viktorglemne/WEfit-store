@@ -43,10 +43,10 @@ INSERT INTO products (name, image, price, category) VALUES
     ('WEfit-Bars 12-pack', 'products_images/WEfit-bars-12-pack.png', 399.00, 'supplement'),
     ('WEfit Belt', 'products_images/WEfit-balte.png', 500.00, 'equipment'),
     ('WEfit Shaker', 'products_images/WEfit-shaker.png', 19.00, 'equipment'),
-    ('WEfit Bag', 'products_images/WEfit-vaska.jpg', 400.00, 'equipment'),
-    ('WEfit Gummmiband', 'products_images/WEfit_gummiband.png', 100.00, 'equipment'),
+    ('WEfit Väska', 'products_images/WEfit-bag.jpg', 400.00, 'equipment'),
+    ('WEfit Gummmiband', 'products_images/WEfit_elastic-band.png', 100.00, 'equipment'),
     ('WEfit T-shirt', 'products_images/WEfit-T-shirt.png', 299.00, 'clothes'),
-    ('WEfit Byxor', 'products_images/WEfit-Byxor.png', 499.00, 'clothes'),
+    ('WEfit Byxor', 'products_images/WEfit-pants.png', 499.00, 'clothes'),
     ('WEfit Shorts', 'products_images/WEfit-shorts.png', 499.00, 'clothes'),
     ('WEfit Hoodie', 'products_images/WEfit-Hoodie.png', 599.00, 'clothes');
 ```
