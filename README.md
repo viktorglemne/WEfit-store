@@ -2,7 +2,7 @@
 
 # **WEfit Store** :muscle:
 
-<img src="./content_images/logo_wefit.png" width="20%">
+<img src="./content_images/svg_icon/logo_WEfit.svg" width="20%">
 
 ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white)
 ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
