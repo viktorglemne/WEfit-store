@@ -1,9 +1,36 @@
 .cart_item img {
-    max-width: 15%;
+    max-width: 7rem;
+    vertical-align: bottom;
+}
+
+.cart_item {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text {
+    margin-left: 40px;
+    align-self: flex-end;
+}
+
+.text img {
+    width: 30px;
+}
+
+.price {
+    margin-left: auto;
+    align-self: flex-end;
+}
+
+.total-price {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .product_container {
-    max-width: 80rem;
+    max-width: 85%;
     padding: 2rem;
     margin-left: auto;
     margin-right: auto;
@@ -11,19 +38,6 @@
     border-radius: 10px;
 }
 
-.info button {
-    background-color: #000000;
-    border: none;
-    color: white;
-    width: 75%;
-    height: 42px;
-    align-items: right;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
 
 .content {
     margin-top: 20px;
@@ -57,6 +71,54 @@
     margin-bottom: 2rem;
 }
 
+/* ####################
+##### buttons ######
+#################### */
+
 button {
     cursor: pointer;
+}
+
+#up-down {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 15px;
+    height: 15px;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#up-down[name="decrease"]:hover {
+    background-color: #ff8888;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+#up-down[name="increase"]:hover {
+    background-color: #a8ffac;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+#delete {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+#delete:hover {
+    filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
+    transition: 0.3s;
+    transform: scale(1.05);
 }

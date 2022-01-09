@@ -36,14 +36,6 @@
 /* tillkallnings funktioner för placering */
 
 .heading {
-    background-color: lightblue;
-    grid-area: header;
-    padding: 20px;
-    line-height: 1.5;
-}
-
-.info {
-    background-color: lightblue;
     grid-area: header;
     padding: 20px;
     line-height: 1.5;

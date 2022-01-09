@@ -10,12 +10,13 @@ $html_pieces = explode("<!--===explode===-->", $html_signup);
 
 try {
     if (!isset($_SESSION['username'])) {
-        $USER = $_POST["email"];
+        $USER = strip_tags($_POST["email"]);
         $PASS = $_POST["password"];
-        $ADRESS = $_POST["address"];
-        $POSTNR = $_POST["zipcode"];
-        $ORT = $_POST["state"];
-        $TELE = $_POST["phonenumber"];
+        $PASS_HASH = password_hash($PASS, PASSWORD_DEFAULT);
+        $ADRESS = strip_tags($_POST["address"]);
+        $POSTNR = strip_tags($_POST["zipcode"]);
+        $ORT = strip_tags($_POST["state"]);
+        $TELE = strip_tags($_POST["phonenumber"]);
         $stmt = $pdo->query("SELECT * FROM `customer` WHERE `email` = '$USER'");
 
         if ($stmt->rowCount() > 0) {
@@ -24,7 +25,7 @@ try {
             echo $html_pieces[0];
             echo $html_pieces[1];
         } else {
-            $sql = "INSERT INTO `customer`(`email`, `password`, `address`, `zipcode`, `state`, `phonenumber`, `admin`) VALUES ('$USER','$PASS','$ADRESS','$POSTNR','$ORT','$TELE',0)";
+            $sql = "INSERT INTO `customer`(`email`, `password`, `address`, `zipcode`, `state`, `phonenumber`, `admin`) VALUES ('$USER','$PASS_HASH','$ADRESS','$POSTNR','$ORT','$TELE',0)";
             $result = $pdo->query($sql);
             $html_pieces[2] = str_replace('--email--', $USER, $html_pieces[2]);
             $html_pieces[2] = str_replace('--pass--', $PASS, $html_pieces[2]);

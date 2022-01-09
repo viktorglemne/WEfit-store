@@ -38,26 +38,7 @@ function Menu($titel)
 
     if (isset($_SESSION['username'])) {
         $user = $_SESSION['username'];
-        $html = str_replace('Log In', $user, $html);
+        $html = str_replace('Logga In', $user, $html);
     }
     echo $html;
-}
-
-function checkId($id)
-{
-    foreach ($_SESSION['cart'] as &$value) {
-        if ($value['id'] === $id) {
-            $checkId = $value['id'];
-        }
-    }
-}
-
-
-function checkQuantity($id)
-{
-    foreach ($_SESSION['cart'] as &$value) {
-        if ($value['id'] === $id) {
-            $quantity = $value['quantity'];
-        }
-    }
 }

@@ -20,7 +20,7 @@ foreach ($result as $row) {
 
 	$tmp = $html_pieces[2];
 
-	$id = $row['id'];
+	$id = $row['idproducts'];
 	$name = $row['name'];
 	$price = $row['price'];
 	$image = $row['image'];

@@ -26,7 +26,6 @@
 /* tillkallnings funktioner för placering */
 
 .heading {
-    background-color: lightblue;
     grid-area: content;
     padding: 40px;
     line-height: 1.5;

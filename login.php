@@ -4,13 +4,26 @@ session_start();
 require_once 'classes/config.php';
 require_once "classes/component.php";
 
+// trigger exceptions in with a try element
 try {
     if (!isset($_SESSION['username'])) {
+
+        // save post value in variables 
         $USER = $_POST["email"];
         $PASS = $_POST["password"];
-        $stmt = $pdo->query("SELECT * FROM customer WHERE email='$USER' AND password = '$PASS';");
-        
-        if ($stmt->rowCount() < 1) {
+
+        // query a statment to fetch data from database
+        $stmt = $pdo->query("SELECT * FROM customer WHERE email='$USER';");
+        // fetch all data in an array and saved in a variable
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // store fetched password in variable 
+        $PASS_HASH = $row['password'];
+
+        // unhash the password and check that it is valid
+        if (password_verify($PASS, $PASS_HASH)) {
+            $_SESSION["username"] = $USER;
+            header('Location: userpage.php');
+        } else {
             $_SESSION['username'] = NULL;
             $titel = "Log in | WEfit Bäst på kosttilskott";
             menu($titel);
@@ -19,15 +32,13 @@ try {
             $html_pieces[1] = str_replace('<a></a>', "Password or email did not match", $html_pieces[1]);
             echo $html_pieces[0];
             echo $html_pieces[1];
-        } else {
-            $_SESSION["username"] = $USER;
-            header("location: userpage.php");
         }
     }
+
+    // If error in the exception then catch and return a error message
 } catch (\Throwable $e) {
     echo $e->getMessage();
 }
-
 
 $footer = file_get_contents("html/footer.html");
 echo $footer;

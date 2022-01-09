@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="styles/login.css">
 <link rel="stylesheet" href="styles/cart.css">
 <br><br>
 <!--===explode===-->
@@ -6,55 +7,60 @@
     <!--===explode===-->
     <form action="action.php" method="POST">
         <div class="cart_item">
-            <div class="image">
+            <div class="item image">
                 <img src="--image--" alt="Bild saknas!">
             </div>
-            <div class="text">
-                <p>--name-- --price-- Kr</p>
-                <p>--quantity-- st</p>
-                <button type="submit" name="decrease">-</button>
-                <button type="submit" name="increase">+</button>
+            <div class="item text">
+                <h2>--name--</h2>
+                <h4>--quantity-- st</h4>
+                <button id="up-down" type="submit" name="decrease">-</button>
+                <button id="up-down" type="submit" name="increase">+</button>
                 <input type="hidden" name="id" value="--id--">
                 <br>
-                <button type="submit" name="remove">Ta bort</button>
+                <button id="delete" type="submit" name="remove"><img src="./content_images/svg_icon/trash-can.svg"
+                        alt="delete">Ta bort</button>
             </div>
-            <br>
-    </form>
-</div>
-
-<!--===explode===-->
-<br>
-<h4>Summa varor: --total--.00 kr</h4>
-<br>
-<hr>
-
-<!--===explode===-->
-<div class="heading">
-    <br>
-    <h3>Uppgifter</h3>
-</div>
-<div class="content">
-    <div class="info">
-        <h4>Adress</h4>
-        <input id="--adress--" type="text">
-        <h4>Postnummer</h4>
-        <input id="--post--" type="text">
-        <h4>Ort</h4>
-        <input id="--ort--" type="text">
-        <h4>Mail</h4>
-        <input id="--mail--" type="text">
-        <h4>Telefonnummer</h4>
-        <input id="--phone--" type="text">
-        <br>
-        <br>
+            <div class="item price">
+                <h4>--price-- Kr</h4>
+            </div>
+        </div>
         <hr>
-        <br>
-
-    </div>
-    <form action="action.php" method="POST">
-        <button type="submit" name="order">Till betalning</button>
     </form>
-</div>
+
+    <!--===explode===-->
+    <br>
+    <h4 class="total-price">Summa varor: --total--.00 kr</h4>
+    <br>
+
+    <!--===explode===-->
+    <div class="heading">
+        <br>
+        <h3>Uppgifter</h3>
+    </div>
+    <div class="content">
+        <div class="info">
+            <h4>Adress</h4>
+            <input id="--adress--" type="text">
+            <h4>Postnummer</h4>
+            <input id="--post--" type="text">
+            <h4>Ort</h4>
+            <input id="--ort--" type="text">
+            <h4>Mail</h4>
+            <input id="--mail--" type="text">
+            <h4>Telefonnummer</h4>
+            <input id="--phone--" type="text">
+            <br>
+            <br>
+            <hr>
+            <br>
+        </div>
+        <!--===explode===-->
+        <form action="order.php" method="POST">
+            <input type="hidden" name="total-price" value="--total--">
+            <button class="sub_button" type="submit">Lägg Order</button></a>
+        </form>
+        <!--===explode===-->
+    </div>
 </div>
 <!--===explode===-->
 </div>
@@ -64,12 +70,5 @@
         <p>Varukorgen är tom</p>
     </div>
 </div>
-
-<!--===explode===-->
-</div>
-<div class="order_container">
-    <h2>Ordern är genomförd</h2>
-</div>
-
 
 </body>

@@ -50,21 +50,3 @@ if (isset($_POST['increase'])) {
 // redirect to cart page
 header("location: cart.php");
 
-
-if (isset($_POST['order'])) {
-
-    if (isset($_SESSION['username'])) {
-        $USER = $_SESSION['username'];
-
-        $query  = "SELECT * FROM `customer` WHERE email='$USER'";
-        $result = $pdo->query($query);
-        $row = $result->fetch();
-
-        $pdo->exec("INSERT INTO `order`(`customer_id`) VALUES ('[value-3]')");
-
-        unset($_SESSION['cart']);
-        header("location: order.php");
-    } else {
-        echo 'test';
-    }
-}

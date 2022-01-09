@@ -6,7 +6,7 @@ require_once "classes/config.php";
 require_once "classes/component.php";
 
 $id = $_GET['id'];
-$query  = "SELECT * FROM products WHERE id=$id";
+$query  = "SELECT * FROM products WHERE idproducts=$id";
 $result = $pdo->query($query);
 $row = $result->fetch();
 
@@ -19,7 +19,7 @@ $footer = file_get_contents("html/footer.html");
 $name = $row['name'];
 $price = $row['price'];
 $image = $row['image'];
-$rowId = $row['id'];
+$rowId = $row['idproducts'];
 
 $myfile = fopen("descriptions/" . $name . ".txt", "r") or die("Unable to open file!");
 $file = fread($myfile, filesize("descriptions/" . $name . ".txt"));
@@ -59,7 +59,7 @@ if (isset($_POST['add'])) {
                         $_SESSION['cart'][$arrayName]['quantity'] += $_POST['quantity'];
 
                         // reloads page to show that item been put in cart
-                        header("Location: description.php?id=$rowId");
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
                     }
                 }
             }
