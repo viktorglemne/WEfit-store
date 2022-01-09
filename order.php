@@ -7,11 +7,10 @@ require_once "classes/config.php";
 // import information from compontets 
 require_once "classes/component.php";
 
-
-// // sets titel of the webpage
-// $titel = "Orderbekräftelse | WEfit - Bäst på kosttillskott";
-// // calls for menu class to show to menu
-// menu($titel);
+// sets titel of the webpage
+$titel = "Orderbekräftelse | WEfit - Bäst på kosttillskott";
+// calls for menu class to show to menu
+menu($titel);
 
 // sets content from html documnet in varaible
 $html_order = file_get_contents("html/order.html");
