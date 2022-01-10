@@ -12,6 +12,8 @@ $query  = "SELECT * FROM `customer` WHERE email='$USER'";
 $result = $pdo->query($query);
 $row = $result->fetch();
 
+$USER_ID = $row['idcustomer'];
+
 $html_login = file_get_contents("html/login.html");
 $html_pieces = explode("<!--===explode===-->", $html_login);
 
@@ -21,31 +23,36 @@ try {
         echo $html_pieces[1];
     } elseif (isset($USER)) {
         echo $html_pieces[2];
-        // $id = $row['idcustomer'];
+        // query a statment to fetch data from database
+        $stmt = $pdo->prepare("SELECT * FROM `orders` WHERE `customer_idcustomer` = '$USER_ID';");
+        // fetch all data in an array and saved in a variable
+        $stmt->execute();
+        // takes the fetched data and return it as a assite array
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $row2 = $stmt->fetchAll();
 
-        // $query2 = $pdo->prepare("SELECT * FROM `product_order` WHERE customer_id=$id");
-        // $query2->execute();
-        // while ($row2 = $query2->fetch(PDO::FETCH_ASSOC)) {
+        // echo "<pre>";
+        // print_r($row2);
+        // echo "</pre>";
 
-        //     $products = $row2['product_id'];
+        foreach ($row2 as $val) {
+            $tmp = $html_pieces[3];
 
-        //     $query3  = "SELECT * FROM `products` WHERE idproducts=$products";
-        //     $result3 = $pdo->query($query3);
-        //     $row3 = $result3->fetch();
+            $orderNr = $val['idorder'];
+            $date = $val['date'];
+            $totalprice = $val['totalprice'];
 
-        //     $name = $row3['name'];
-        //     $price = $row3['price'];
-        //     $image = $row3['image'];
+            // replace value in html dockumnet with new value from database
+            // value too the order
+            $tmp = str_replace('--Ordernr--', $orderNr, $tmp);
+            $tmp = str_replace('--Date--', $date, $tmp);
+            $tmp = str_replace('--totalprice--', $totalprice, $tmp);
 
-        //     $tmp = $html_pieces[3];
-
-        //     $tmp = str_replace('--image--', $image, $tmp);
-        //     $tmp = str_replace('--name--', $name, $tmp);
-        //     $tmp = str_replace('--price--', $price, $tmp);
-
-        //     echo $tmp;
-        // }
+            // echo out the assigned values for html_pieces
+            echo $tmp;
+        }
         echo $html_pieces[4];
+        echo $html_pieces[6];
     }
 } catch (\Throwable $e) {
     echo $e->getMessage();
@@ -53,3 +60,17 @@ try {
 
 $footer = file_get_contents("html/footer.html");
 echo $footer;
+
+
+
+
+// foreach ($idOrder as $orderId) {
+//     // query a statment to fetch data from database
+//     $stmt3 = $pdo->query("SELECT * FROM `order_item` RIGHT JOIN `products` ON `order_item`.`products_idproducts` = `products`.`idproducts` WHERE `order_idorder` = '$orderId';");
+//     // fetch all data in an array and saved in a variable
+//     $row3 = $stmt3->fetch(PDO::FETCH_ASSOC);
+
+//     echo $row3[''];
+
+//     }
+// SELECT * FROM `order_item` RIGHT JOIN `products` ON `order_item`.`products_idproducts` = `products`.`idproducts` RIGHT JOIN `orders` ON `order_item`.`order_idorder` = `orders`.`idorder` WHERE `order_idorder` = 18;

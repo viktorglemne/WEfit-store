@@ -1,24 +1,33 @@
-<h1>ordernummer:--ordernr--</h1>
-<h1>Grattis!</h1>
-<h2>Du har nu fått schyssta prylar beställda hem till dig.</h2>
+<link rel="stylesheet" href="/docs/Test/9/styles/login.css">
+<link rel="stylesheet" href="/docs/Test/9/styles/cart.css">
 
-<table>
-    <tr>
-        <th>Artikel</th>
-        <th>Antal</th>
-        <th>Pris</th>
-    </tr>
-    <!--===explode===-->
-    <tr>
-        <td>--name--</td>
-        <td>--quantity--</td>
-        <td>--price--.00kr</td>
-    </tr>
-    <!--===explode===-->
-</table>
-
-
-<h3>Totalt</h3>
-<h4>--total--.00kr</h4>
-
-
+<div class="product_container order">
+    <h1>Ordernummer: --ordernr--</h1>
+    <img src="/docs/Test/9/content_images/svg_icon/party-poper.svg" alt="">
+    <h1>Grattis!</h1>
+    <h3>Du har nu fått schyssta prylar beställda hem till dig.</h3>
+    <div class="table-container">
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Artikel</th>
+                    <th>Artikel</th>
+                    <th>Antal</th>
+                    <th>Pris</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--===explode===-->
+                <tr>
+                    <td><img src="--image--" alt="Bild saknas!"></td>
+                    <td>--name--</td>
+                    <td>--quantity--</td>
+                    <td>--price--.00kr</td>
+                </tr>
+                <!--===explode===-->
+            </tbody>
+        </table>
+    </div>
+    <h3>Totalt</h3>
+    <h4>--total--.00kr</h4>
+</div>

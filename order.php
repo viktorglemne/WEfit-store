@@ -74,6 +74,7 @@ if (isset($_SESSION['username'])) {
                     $name = $row3['name'];
                     $price = $row3['price'];
                     $idproduct = $row3['idproducts'];
+                    $image = $row3['image'];
 
                     $sql2 = "INSERT INTO `order_item`(`products_idproducts`, `order_idorder`) VALUES ('$idproduct','$idorder')";
                     $result2 = $pdo->query($sql2);
@@ -83,6 +84,7 @@ if (isset($_SESSION['username'])) {
                     $tmp2 = str_replace('--quantity--', $quantity, $tmp2);
                     $tmp2 = str_replace('--name--', $name, $tmp2);
                     $tmp2 = str_replace('--price--', $price, $tmp2);
+                    $tmp2 = str_replace('--image--', $image, $tmp2);
 
                     // echo out the assigned values for html_pieces
                     echo $tmp2;
@@ -91,4 +93,10 @@ if (isset($_SESSION['username'])) {
         }
         unset($_SESSION['cart']);
     }
+    $html_pieces[2] = str_replace('--total--', $PRICE, $html_pieces[2]);
+    echo $html_pieces[2];
 }
+
+
+// display footer content from footer html file
+echo $footer;

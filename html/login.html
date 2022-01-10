@@ -28,18 +28,57 @@
 </div>
 <!--===explode===-->
 <link rel="stylesheet" href="styles/cart.css">
-<h1>Min profil</h1>
-<h3>orderhistorik</h3>
-<hr><br>
-<!--===explode===-->
-<div class="cart_item">
-    <div class="image">
-        <img src="--image--" alt="Bild saknas!">
+<div class="product_container profile">
+    <h1>Min profil</h1>
+    <div class="container">
+        <img src="./content_images/svg_icon/user-solid.svg" alt="profile-pic">
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <br>
+            <label for="fileToUpload" id="button-upload" class="button-reg">
+                Lägg till profilfoto
+            </label>
+            <input type="file" name="fileToUpload" id="fileToUpload" onchange="this.form.submit()">
+            <br><br><br>
+        </form>
     </div>
-    <div class="text">
-        <p>--name-- --price-- Kr</p>
+    <hr><br>
+    <div class="order_list">
+        <div class="table-container-profile">
+            <table class="order-table history">
+                <caption>
+                    <h2>Orderhistorik</h2>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th>Datum</th>
+                        <th>Pris</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--===explode===-->
+                    <tr onclick="window.location='/order_info.php'">
+                        <td>--Ordernr--</td>
+                        <td>--Date--</td>
+                        <td>--totalprice--.00kr</td>
+                    </tr>
+                    <!--===explode===-->
+                </tbody>
+            </table>
+        </div>
+
     </div>
+    <hr><br>
+    <!--===explode===-->
+    <div class="cart_item">
+        <div class="image">
+            <img src="--image--" alt="Bild saknas!">
+        </div>
+        <div class="text">
+            <p>--name-- --price-- Kr</p>
+        </div>
+    </div>
+    <hr><br>
+    <!--===explode===-->
+    <a href="logout.php"><button class="sub_button">Logga ut</button></a>
 </div>
-<hr><br>
-<!--===explode===-->
-<button><a href="logout.php">Logga ut</a></button>

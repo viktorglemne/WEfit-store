@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -44,8 +46,122 @@ p {
   text-align: center;
   margin-bottom: 3rem;
 }
+
 .success h1 {
   font-weight: 400;
   color: green;
 }
 
+
+/* ####################
+##### buttons ######
+#################### */
+
+button {
+  cursor: pointer;
+}
+
+#up-down {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 15px;
+  height: 15px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#up-down[name="decrease"]:hover {
+  background-color: #ff8888;
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
+#up-down[name="increase"]:hover {
+  background-color: #a8ffac;
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
+#delete {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+#delete:hover {
+  filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
+  transition: 0.3s;
+  transform: scale(1.05);
+}
+
+#button-upload {
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+.button-reg {
+  width: 40%;
+  padding: 10px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #004099;
+  color: white;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.button-reg:hover {
+  background: #004099ef;
+  transform: scale(1.01);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+
+.sub_button {
+  width: 40%;
+  padding: 10px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #000000;
+  color: white;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.sub_button:hover {
+  background: #000000ef;
+  transform: scale(1.01);
+}
+
+
+button a {
+  color: white;
+  text-decoration: none;
+}

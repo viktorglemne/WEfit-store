@@ -27,7 +27,7 @@ if (isset($_SESSION['cart'])) {
     // create a variable with a arry of all id values that exist in session cart array.
     $product_id = array_column($_SESSION['cart'], 'id');
     // fetch all values from products table in database
-    $stmt = $pdo->prepare("SELECT * FROM products");
+    $stmt = $pdo->prepare("SELECT * FROM `products`");
     $stmt->execute();
     // takes the fetched data and return it as an associative array an loops through it
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

@@ -34,10 +34,9 @@
     padding: 2rem;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(248, 248, 248);
+    background-color: #f8f8f8;
     border-radius: 10px;
 }
-
 
 .content {
     margin-top: 20px;
@@ -62,7 +61,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 16rem;
-    background-color: rgb(248, 248, 248);
+    background-color: #f8f8f8;
     border-radius: 10px;
 }
 
@@ -71,54 +70,70 @@
     margin-bottom: 2rem;
 }
 
-/* ####################
-##### buttons ######
-#################### */
+/* Table Styles */
 
-button {
-    cursor: pointer;
+th, td {
+    font-size: 1rem;
+    font-weight: lighter;
 }
 
-#up-down {
-    background-color: #ffffff;
+.order {
+    margin: 8rem auto 3rem auto;
+    text-align: center;
+}
+
+.order img {
+    width: 4rem;
+}
+
+.table-container {
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px #00000033;
+}
+
+.table-container-profile {
+    box-shadow: none;
+}
+
+.order-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
     border: none;
-    border-radius: 50%;
-    padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 15px;
-    height: 15px;
-    font-size: 18px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
 }
 
-#up-down[name="decrease"]:hover {
-    background-color: #ff8888;
-    transition: 0.3s;
-    transform: scale(1.1);
-}
-#up-down[name="increase"]:hover {
-    background-color: #a8ffac;
-    transition: 0.3s;
-    transform: scale(1.1);
+.order-table td, .order-table th {
+    text-align: center;
+    padding: 8px;
 }
 
-#delete {
-    background: none;
-    color: inherit;
+.order-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.history tr:hover {
+    background: #32496091;
+}
+
+.order-table thead th {
+    color: #ffffff;
+    background: #324960;
+}
+
+caption {
+    background-color: #f8f8f8;
     border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+    text-align: left;
 }
 
-#delete:hover {
-    filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
-    transition: 0.3s;
-    transform: scale(1.05);
+.profile img {
+    border: 1 solid black;
+    margin: 1rem;
+    width: 4rem;
 }
+
