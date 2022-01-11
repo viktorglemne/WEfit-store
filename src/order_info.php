@@ -20,7 +20,9 @@ $html_pieces = explode("<!--===explode===-->", $html_order);
 // sets content from footer-html documnet in varaible
 $footer = file_get_contents("html/footer.html");
 
+// if user session been set then do something
 if (isset($_SESSION['username'])) {
+    // set value from get in variable
     $orderNr = $_GET['idorder'];
 
     $html_pieces[0] = str_replace('--ordernr--', $orderNr, $html_pieces[0]);
@@ -56,12 +58,15 @@ if (isset($_SESSION['username'])) {
         echo $tmp;
     }
 
+    // query sql statement for selection of all row in table with where clause
     $stmt2 = $pdo->query("SELECT * FROM `orders` WHERE `idorder` = '$orderNr';");
     // fetch all data in an array and saved in a variable
     $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 
+    // sets value in variable
     $totalprice = $row2['totalprice'];
 
+    // gets the html documnet, replace value and displays it
     $html_pieces[4] = str_replace('--total--', $totalprice, $html_pieces[4]);
     echo $html_pieces[4];
 }

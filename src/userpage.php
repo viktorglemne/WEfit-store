@@ -1,27 +1,40 @@
 <?php
+// session is started if you don't write this line can't use $_Session global variable
 session_start();
-
+// include component and config once that consists with useful components and database conneciton
 require_once 'classes/config.php';
 require_once "classes/component.php";
+
+// sets titel to page 
 $titel = "Log in | WEfit Bäst på kosttilskott";
+// displays menu and title
 menu($titel);
 
+// sets user session i variable
 $USER = $_SESSION['username'];
 
+// sets sql statement for selection of all row in table with where clause in variable
 $query  = "SELECT * FROM `customer` WHERE email='$USER'";
+// execute the statment
 $result = $pdo->query($query);
+// fetches the next row from a result set
 $row = $result->fetch();
 
+// sets user id in variable
 $USER_ID = $row['idcustomer'];
 
+// sets html dokumnet in variable
 $html_login = file_get_contents("html/login.html");
+// splits html documnet in pieces
 $html_pieces = explode("<!--===explode===-->", $html_login);
 
+// trigger exceptions in with a try element
 try {
     if (!isset($USER)) {
         echo $html_pieces[0];
         echo $html_pieces[1];
     } elseif (isset($USER)) {
+        // $html_pieces[2] = str_replace('default-pic.svg', $image, $html_pieces[2]);
         echo $html_pieces[2];
         // query a statment to fetch data from database
         $stmt = $pdo->prepare("SELECT * FROM `orders` WHERE `customer_idcustomer` = '$USER_ID';");
@@ -31,9 +44,12 @@ try {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $row2 = $stmt->fetchAll();
 
+        // loops through all values in fetch array
         foreach ($row2 as $val) {
+            // sets html split in variable
             $tmp = $html_pieces[3];
 
+            // sets value in variable
             $orderNr = $val['idorder'];
             $date = $val['date'];
             $totalprice = $val['totalprice'];
@@ -47,41 +63,42 @@ try {
             // echo out the assigned values for html_pieces
             echo $tmp;
         }
+        // display html split
         echo $html_pieces[4];
 
+        // sets html documnet in variable
         $html_signup = file_get_contents("html/signup.html");
+        // splits html documnet in pieces
         $html_pieces_signup = explode("<!--===explode===-->", $html_signup);
 
+        // display html split
         echo $html_pieces_signup[0];
+
+        // sets html documnet in variable
         $tmp_signup_1 = $html_pieces_signup[1];
+        // replace value in html document
         $tmp_signup_1 = str_replace('member', 'settings', $tmp_signup_1);
         $tmp_signup_1 = str_replace('Bli Medlem!', 'Uppgifter', $tmp_signup_1);
         $tmp_signup_1 = str_replace('bli en del av WEfit', 'uppdatera dina uppgifter', $tmp_signup_1);
         $tmp_signup_1 = str_replace('signup.php', 'action.php', $tmp_signup_1);
+        // display split
         echo $tmp_signup_1;
 
+        // sets html documnet in variable
         $tmp_signup_3 = $html_pieces_signup[3];
+        // replace value in html document
         $tmp_signup_3 = str_replace('Bli Medlem!', 'Spara', $tmp_signup_3);
+        // display splits
         echo $tmp_signup_3;
         echo $html_pieces[6];
     }
+
+// If error in the exception then catch and return a error message    
 } catch (\Throwable $e) {
     echo $e->getMessage();
 }
 
+// gets the footer html documnet and displays it
 $footer = file_get_contents("html/footer.html");
 echo $footer;
 
-
-
-
-// foreach ($idOrder as $orderId) {
-//     // query a statment to fetch data from database
-//     $stmt3 = $pdo->query("SELECT * FROM `order_item` RIGHT JOIN `products` ON `order_item`.`products_idproducts` = `products`.`idproducts` WHERE `order_idorder` = '$orderId';");
-//     // fetch all data in an array and saved in a variable
-//     $row3 = $stmt3->fetch(PDO::FETCH_ASSOC);
-
-//     echo $row3[''];
-
-//     }
-// SELECT * FROM `order_item` RIGHT JOIN `products` ON `order_item`.`products_idproducts` = `products`.`idproducts` RIGHT JOIN `orders` ON `order_item`.`order_idorder` = `orders`.`idorder` WHERE `order_idorder` = 18;

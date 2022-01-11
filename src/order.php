@@ -93,8 +93,10 @@ if (isset($_SESSION['username'])) {
                 }
             }
         }
+        // unsets cart 
         unset($_SESSION['cart']);
     }
+    // displays totalprice value
     $html_pieces[4] = str_replace('--total--', $PRICE, $html_pieces[4]);
     echo $html_pieces[4];
 }

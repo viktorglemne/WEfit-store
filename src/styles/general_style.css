@@ -133,9 +133,9 @@ button {
   transform: scale(1.01);
 }
 
-input[type="file"] {
+/* input[type="file"] {
   display: none;
-}
+} */
 
 
 .sub_button {
@@ -160,8 +160,8 @@ input[type="file"] {
   transform: scale(1.01);
 }
 
-
-button a {
+.sub_button a {
+  max-width: 6rem;
   color: white;
   text-decoration: none;
 }

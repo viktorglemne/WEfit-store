@@ -50,6 +50,11 @@ nav {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    margin: 10px;
 }
 
 .dropdown {

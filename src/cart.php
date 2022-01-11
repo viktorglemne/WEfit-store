@@ -72,7 +72,7 @@ if (isset($_SESSION['cart'])) {
     $html_pieces[3] = str_replace('--total--', $totalPrice, $html_pieces[3]);
     echo $html_pieces[3];
 
-    // display information part from html document
+    // display information part from html document if user session is set
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
         $stmt = $pdo->prepare("SELECT * FROM `customer` WHERE `email` = '$username'");
@@ -80,22 +80,29 @@ if (isset($_SESSION['cart'])) {
         // takes the fetched data and return it as a assite array
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // sets fetch value from database to variable
         $ADDRESS = $row['address'];
         $ZIPCODE = $row['zipcode'];
         $STATE = $row['state'];
         $EAMIL = $row['email'];
         $PHONE = $row['phonenumber'];
 
+        // puts html pieces in a variable
         $tmp2 = $html_pieces[4];
+
+        // replace value in html piece
         $tmp2 = str_replace('id="--adress--"', "value=" . "'$ADDRESS'", $tmp2);
         $tmp2 = str_replace('id="--post--"', "value=" . "'$ZIPCODE'", $tmp2);
         $tmp2 = str_replace('id="--ort--"', "value=" . "'$STATE'", $tmp2);
         $tmp2 = str_replace('id="--mail--"', "value=" . "'$EAMIL'", $tmp2);
         $tmp2 = str_replace('id="--phone--"', "value=" . "'$PHONE'", $tmp2);
 
+        // display html piece
         echo $tmp2;
         $html_pieces[5] = str_replace('--total--', $totalPrice, $html_pieces[5]);
         echo $html_pieces[5];
+    
+        // else if user session not been set then display login form
     } else {
         // sets content from html documnet in varaible
         $html_login = file_get_contents("html/login.html");
