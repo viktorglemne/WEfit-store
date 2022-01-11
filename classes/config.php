@@ -27,17 +27,3 @@ try {
     throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$pdo->exec("CREATE TABLE IF NOT EXISTS products(
-    id INT AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    image TEXT NOT NULL,
-    price DECIMAL(5,2) NOT NULL,
-    category VARCHAR(10) NOT NULL,
-    PRIMARY KEY(id))");
-
-$pdo->exec("CREATE TABLE IF NOT EXISTS customer(
-    id INT AUTO_INCREMENT,
-    email TEXT NOT NULL,
-    pass TEXT NOT NULL,
-    PRIMARY KEY(id))");
-

@@ -50,3 +50,18 @@ if (isset($_POST['increase'])) {
 // redirect to cart page
 header("location: cart.php");
 
+
+if (isset($_POST['skicka'])) {
+
+    $USER = $_SESSION['username'];
+
+    $ADRESS = strip_tags($_POST["address"]);
+    $POSTNR = strip_tags($_POST["zipcode"]);
+    $ORT = strip_tags($_POST["state"]);
+    $TELE = strip_tags($_POST["phonenumber"]);
+
+    $sql = "UPDATE `customer` SET `address`='$ADRESS',`zipcode`='$POSTNR',`state`='$ORT',`phonenumber`='$TELE' WHERE `email` = '$USER'";
+    $result = $pdo->query($sql);
+    
+    header("location: userpage.php");
+}

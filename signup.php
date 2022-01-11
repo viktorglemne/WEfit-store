@@ -20,17 +20,19 @@ try {
         $stmt = $pdo->query("SELECT * FROM `customer` WHERE `email` = '$USER'");
 
         if ($stmt->rowCount() > 0) {
-            $html_pieces[1] = str_replace('<!---', "", $html_pieces[1]);
-            $html_pieces[1] = str_replace('--->', "", $html_pieces[1]);
+            $html_pieces[2] = str_replace('<!---', "", $html_pieces[2]);
+            $html_pieces[2] = str_replace('--->', "", $html_pieces[2]);
             echo $html_pieces[0];
             echo $html_pieces[1];
+            echo $html_pieces[2];
+            echo $html_pieces[3];
         } else {
             $sql = "INSERT INTO `customer`(`email`, `password`, `address`, `zipcode`, `state`, `phonenumber`, `admin`) VALUES ('$USER','$PASS_HASH','$ADRESS','$POSTNR','$ORT','$TELE',0)";
             $result = $pdo->query($sql);
-            $html_pieces[2] = str_replace('--email--', $USER, $html_pieces[2]);
-            $html_pieces[2] = str_replace('--pass--', $PASS, $html_pieces[2]);
+            $html_pieces[4] = str_replace('--email--', $USER, $html_pieces[4]);
+            $html_pieces[4] = str_replace('--pass--', $PASS, $html_pieces[4]);
             echo $html_pieces[0];
-            echo $html_pieces[2];
+            echo $html_pieces[4];
         }
     } else {
         $_SESSION["username"] = $USER;

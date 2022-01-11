@@ -4,61 +4,107 @@
     /* delar upp bredd i fraktioner av hemsidan */
     grid-template-columns: 0.05fr 1fr 0.05fr 0.4fr 0.05fr;
     /* förklarar vilken del som ska finnas vart på sidan */
-    grid-template-rows: 40px 100px 100px 100px 100px 400px;
-    grid-template-areas: 
-    ". . . . ."
-    ". image . content1 ."
-    ". image . content2 ."
-    ". image . content3 ."
-    ". image . content4 ."
-    ". . . . .";
+    grid-template-rows: 20px 50px 50px 20px 60px 120px 120px 120px 120px 80px 80px 400px 200px;
+    grid-template-areas:
+        ". . . . ."
+        ". heading heading  heading ."
+        ". head_text head_text head_text ."
+        ". . . . ."
+        ". . . heading1 ."
+        ". image . content1 ."
+        ". image . content2 ."
+        ". image . content3 ."
+        ". image . content4 ."
+        ". . . . ."
+        ". heading2 . . ."
+        ". image2 . image3 ."
+        ". . . . .";
+}
+
+
+.heading {
+    grid-area: heading;
+}
+
+.head_text {
+    grid-area: head_text;
+}
+
+.heading1 {
+    grid-area: heading1;
+}
+
+.heading2 {
+    grid-area: heading2;
 }
 
 /* sätter storlek på bilder */
-.box_pic img {
-    width: 100%;
-    max-height: 60vh;
-    object-fit: cover;
-    object-position: 0 40%;
+.product_container img {
+    max-width: 40rem;
 }
 
-.box_pic{
+.image {
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.image:hover {
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.6);
+}
+
+.box_one {
     grid-area: image;
+    text-align: center;
+}
+
+.box_two {
+    grid-area: image2;
+    text-align: center;
+}
+
+.box_three {
+    grid-area: image3;
     text-align: center;
 }
 
 /* tillkallnings funktioner för placering */
 
-.article1 {
+.article_content {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    border: solid 1px #f8f8f8;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.article_content p {
+    margin-left: 1rem;
+}
+
+.article:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.article img {
+    max-width: 4rem;
+    vertical-align: bottom;
+}
+
+.one {
     background-color: white;
     grid-area: content1;
-    padding: 40px;
-    line-height: 1.5;
-    border: solid 1px black;
 }
 
-.article2 {
+.two {
     grid-area: content2;
-    background-color: lightcoral;
-    padding: 40px;
-    line-height: 1.5;
-    border: solid 1px black;
 }
 
-.article3 {
-    background-color: lightpink;
+.three {
     grid-area: content3;
-    padding: 40px;
-    line-height: 1.5;
-    border: solid 1px black;
 }
 
-.article4 {
-    background-color: lightsalmon;
+.four {
     grid-area: content4;
-    padding: 40px;
-    line-height: 1.5;
-    border: solid 1px black;;
 }
 
 .product_container a {
@@ -67,6 +113,6 @@
     text-decoration: none;
 }
 
-.box_pic:hover h2 {
+.box_pic:hover h3 {
     text-decoration: underline;
 }

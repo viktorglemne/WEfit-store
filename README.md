@@ -29,27 +29,177 @@ The main focus have been on enhancing your understanding on web development and 
 If you like to try the website out or contribut to the project, 
 Before you execute this project make sure you insert values in the database. 
 
-To insert values in the database just type this command.
+Copy and execute in maridb in a new database named website.
 
+```-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Värd: localhost
+-- Tid vid skapande: 11 jan 2022 kl 11:14
+-- Serverversion: 10.4.21-MariaDB
+-- PHP-version: 8.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Databas: `website`
+--
+
+--
+-- Tabellstruktur `customer`
+--
+
+CREATE TABLE `customer` (
+  `idcustomer` int(11) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `zipcode` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `phonenumber` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tabellstruktur `orders`
+--
+
+CREATE TABLE `orders` (
+  `idorder` int(11) NOT NULL,
+  `customer_idcustomer` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `totalprice` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tabellstruktur `order_item`
+--
+
+CREATE TABLE `order_item` (
+  `products_idproducts` int(11) NOT NULL,
+  `order_idorder` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tabellstruktur `products`
+--
+
+CREATE TABLE `products` (
+  `idproducts` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `image` tinytext NOT NULL,
+  `price` decimal(5,2) NOT NULL,
+  `category` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumpning av Data i tabell `products`
+--
+
+INSERT INTO `products` (`idproducts`, `name`, `image`, `price`, `category`) VALUES
+(1, 'WEfit-Prework', 'products_images/WEfit-Prework.png', '299.00', 'supplement'),
+(2, 'WEfit-Sport', 'products_images/WEfit-Sport.png', '299.00', 'supplement'),
+(3, 'WEfit-After', 'products_images/WEfit-After.png', '299.00', 'supplement'),
+(4, 'WEfit-Drink', 'products_images/WEfit-drink.png', '19.00', 'supplement'),
+(5, 'WEfit-Bars', 'products_images/WEfit-bars.png', '39.00', 'supplement'),
+(6, 'WEfit-Milkshake', 'products_images/WEfit-milkshake.png', '22.00', 'supplement'),
+(7, 'WEfit-Gel', 'products_images/WEfit-gel.png', '19.00', 'supplement'),
+(8, 'WEfit-Bars 12-pack', 'products_images/WEfit-bars-12-pack.png', '399.00', 'supplement'),
+(9, 'WEfit Belt', 'products_images/WEfit-balte.png', '500.00', 'equipment'),
+(10, 'WEfit Shaker', 'products_images/WEfit-shaker.png', '19.00', 'equipment'),
+(11, 'WEfit Väska', 'products_images/WEfit-bag.jpg', '400.00', 'equipment'),
+(12, 'WEfit Gummmiband', 'products_images/WEfit_elastic-band.png', '100.00', 'equipment'),
+(13, 'WEfit T-shirt', 'products_images/WEfit-T-shirt.png', '299.00', 'clothes'),
+(14, 'WEfit Byxor', 'products_images/WEfit-pants.png', '499.00', 'clothes'),
+(15, 'WEfit Shorts', 'products_images/WEfit-shorts.png', '499.00', 'clothes'),
+(16, 'WEfit Hoodie', 'products_images/WEfit-Hoodie.png', '599.00', 'clothes');
+
+--
+-- Index för dumpade tabeller
+--
+
+--
+-- Index för tabell `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`idcustomer`);
+
+--
+-- Index för tabell `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`idorder`,`customer_idcustomer`),
+  ADD KEY `fk_order_customer1_idx` (`customer_idcustomer`);
+
+--
+-- Index för tabell `order_item`
+--
+ALTER TABLE `order_item`
+  ADD PRIMARY KEY (`products_idproducts`,`order_idorder`),
+  ADD KEY `fk_products_has_order_order1_idx` (`order_idorder`),
+  ADD KEY `fk_products_has_order_products_idx` (`products_idproducts`);
+
+--
+-- Index för tabell `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`idproducts`);
+
+--
+-- AUTO_INCREMENT för dumpade tabeller
+--
+
+--
+-- AUTO_INCREMENT för tabell `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `idcustomer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT för tabell `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT för tabell `products`
+--
+ALTER TABLE `products`
+  MODIFY `idproducts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restriktioner för dumpade tabeller
+--
+
+--
+-- Restriktioner för tabell `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `fk_order_customer1` FOREIGN KEY (`customer_idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restriktioner för tabell `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `fk_products_has_order_order1` FOREIGN KEY (`order_idorder`) REFERENCES `orders` (`idorder`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_products_has_order_products` FOREIGN KEY (`products_idproducts`) REFERENCES `products` (`idproducts`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 ```
-INSERT INTO products (name, image, price, category) VALUES
-    ('WEfit-Prework', 'products_images/WEfit-Prework.png', 299.00, 'supplement'),
-    ('WEfit-Sport', 'products_images/WEfit-Sport.png', 299.00, 'supplement'),
-    ('WEfit-After', 'products_images/WEfit-After.png', 299.00, 'supplement'),
-    ('WEfit-Drink', 'products_images/WEfit-drink.png', 19.00, 'supplement'),
-    ('WEfit-Bars', 'products_images/WEfit-bars.png', 39.00, 'supplement'),
-    ('WEfit-Milkshake', 'products_images/WEfit-milkshake.png', 22.00, 'supplement'),
-    ('WEfit-Gel', 'products_images/WEfit-gel.png', 19.00, 'supplement'),
-    ('WEfit-Bars 12-pack', 'products_images/WEfit-bars-12-pack.png', 399.00, 'supplement'),
-    ('WEfit Belt', 'products_images/WEfit-balte.png', 500.00, 'equipment'),
-    ('WEfit Shaker', 'products_images/WEfit-shaker.png', 19.00, 'equipment'),
-    ('WEfit Väska', 'products_images/WEfit-bag.jpg', 400.00, 'equipment'),
-    ('WEfit Gummmiband', 'products_images/WEfit_elastic-band.png', 100.00, 'equipment'),
-    ('WEfit T-shirt', 'products_images/WEfit-T-shirt.png', 299.00, 'clothes'),
-    ('WEfit Byxor', 'products_images/WEfit-pants.png', 499.00, 'clothes'),
-    ('WEfit Shorts', 'products_images/WEfit-shorts.png', 499.00, 'clothes'),
-    ('WEfit Hoodie', 'products_images/WEfit-Hoodie.png', 599.00, 'clothes');
-```
+
+
 
 More about how to contribute below. :fire:
 

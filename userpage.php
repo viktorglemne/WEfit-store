@@ -31,10 +31,6 @@ try {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $row2 = $stmt->fetchAll();
 
-        // echo "<pre>";
-        // print_r($row2);
-        // echo "</pre>";
-
         foreach ($row2 as $val) {
             $tmp = $html_pieces[3];
 
@@ -52,6 +48,21 @@ try {
             echo $tmp;
         }
         echo $html_pieces[4];
+
+        $html_signup = file_get_contents("html/signup.html");
+        $html_pieces_signup = explode("<!--===explode===-->", $html_signup);
+
+        echo $html_pieces_signup[0];
+        $tmp_signup_1 = $html_pieces_signup[1];
+        $tmp_signup_1 = str_replace('member', 'settings', $tmp_signup_1);
+        $tmp_signup_1 = str_replace('Bli Medlem!', 'Uppgifter', $tmp_signup_1);
+        $tmp_signup_1 = str_replace('bli en del av WEfit', 'uppdatera dina uppgifter', $tmp_signup_1);
+        $tmp_signup_1 = str_replace('signup.php', 'action.php', $tmp_signup_1);
+        echo $tmp_signup_1;
+
+        $tmp_signup_3 = $html_pieces_signup[3];
+        $tmp_signup_3 = str_replace('Bli Medlem!', 'Spara', $tmp_signup_3);
+        echo $tmp_signup_3;
         echo $html_pieces[6];
     }
 } catch (\Throwable $e) {

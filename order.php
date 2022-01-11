@@ -49,6 +49,8 @@ if (isset($_SESSION['username'])) {
 
         $html_pieces[0] = str_replace('--ordernr--', $idorder, $html_pieces[0]);
         echo $html_pieces[0];
+        echo $html_pieces[1];
+        echo $html_pieces[2];
         // create a variable with a arry of all id values that exist in session cart array.
         $product_id = array_column($_SESSION['cart'], 'id');
         // fetch all values from products table in database
@@ -62,7 +64,7 @@ if (isset($_SESSION['username'])) {
                 // if value of id is the same as in the cart array then do something
                 if ($row3['idproducts'] == $session_id) {
                     // echo first pice of information from html documnet
-                    $tmp2 = $html_pieces[1];
+                    $tmp2 = $html_pieces[3];
                     // through session cart arry to find array name where id exist
                     foreach ($_SESSION['cart'] as $value => $key) {
                         if ($key['id'] == $row3['idproducts']) {
@@ -76,7 +78,7 @@ if (isset($_SESSION['username'])) {
                     $idproduct = $row3['idproducts'];
                     $image = $row3['image'];
 
-                    $sql2 = "INSERT INTO `order_item`(`products_idproducts`, `order_idorder`) VALUES ('$idproduct','$idorder')";
+                    $sql2 = "INSERT INTO `order_item`(`products_idproducts`, `order_idorder`, `quantity`) VALUES ('$idproduct','$idorder', $quantity)";
                     $result2 = $pdo->query($sql2);
 
                     // replace value in html dockumnet with new value from database
@@ -93,8 +95,8 @@ if (isset($_SESSION['username'])) {
         }
         unset($_SESSION['cart']);
     }
-    $html_pieces[2] = str_replace('--total--', $PRICE, $html_pieces[2]);
-    echo $html_pieces[2];
+    $html_pieces[4] = str_replace('--total--', $PRICE, $html_pieces[4]);
+    echo $html_pieces[4];
 }
 
 
