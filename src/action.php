@@ -77,3 +77,60 @@ if (isset($_POST['skicka'])) {
     // locate back to userpage
     header("location: userpage.php");
 }
+
+// if post request been set then update user settings 
+if (isset($_POST['add'])) {
+
+    $idpost = $_POST['id'];
+    $quantity = $_POST['quantity'];
+
+    // check that cart been set
+    if (isset($_SESSION['cart'])) {
+
+        // store info about item array id value variable
+        $item_array_id = array_column($_SESSION['cart'], "id");
+        // store info about item array quantity value in variable
+        $item_array_quantity = array_column($_SESSION['cart'], "quantity");
+
+        // checks if post id vaule exist in session cart
+        if (in_array($idpost, $item_array_id)) {
+
+            // if id exist in session cart then loop through vaule and keys to find array name / index
+            foreach ($_SESSION['cart'] as $value => $key) {
+
+                // if key id is equal to post id then store value in varible
+                if ($key['id'] == $idpost) {
+                    $arrayName = $value;
+                    // if id are the same on index that id in post is then increase quantity 
+                    if ($_SESSION['cart'][$arrayName]['id'] == $idpost) {
+
+                        // increase item quantity in session
+                        $_SESSION['cart'][$arrayName]['quantity'] += $quantity;
+                    }
+                }
+            }
+        // else if post id vaule not exist in session cart then set a new value in array
+        } else {
+            $item_array = array(
+                'id' => $idpost,
+                'quantity' => $quantity
+            );
+            // take the last index key of session and increase with 1
+            // stored in a variable
+            $count = array_key_last($_SESSION['cart']) + 1;
+
+            // sets new value in session with count varible value of index
+            $_SESSION['cart'][$count] = $item_array;        
+        }
+        // if cart not ben set then set cart with new value
+    } else {
+        $item_array = array(
+            'id' => $idpost,
+            'quantity' => $quantity
+        );
+        // Create new session variable
+        $_SESSION['cart'][1] = $item_array;
+    }
+    // reloads page to show that item been put in cart
+    header("Location: description.php?id=$idpost");
+}

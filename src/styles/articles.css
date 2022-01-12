@@ -4,7 +4,7 @@
     /* delar upp bredd i fraktioner av hemsidan */
     grid-template-columns: 0.05fr 1fr 0.05fr 0.4fr 0.05fr;
     /* förklarar vilken del som ska finnas vart på sidan */
-    grid-template-rows: 20px 50px 50px 20px 60px 120px 120px 120px 120px 80px 80px 400px 200px;
+    grid-template-rows: 20px 60px 30px 20px 60px 120px 120px 120px 120px 80px 80px 400px 200px;
     grid-template-areas:
         ". . . . ."
         ". heading heading  heading ."
@@ -20,7 +20,6 @@
         ". image2 . image3 ."
         ". . . . .";
 }
-
 
 .heading {
     grid-area: heading;

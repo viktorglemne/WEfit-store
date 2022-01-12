@@ -2,7 +2,7 @@
 
 # **WEfit Store** :muscle:
 
-<img src="./content_images/svg_icon/logo_WEfit.svg" width="20%">
+<img src="./src/content_images/svg_icon/logo_WEfit.svg" width="20%">
 
 ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white)
 ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
@@ -29,81 +29,51 @@ The main focus have been on enhancing your understanding on web development and 
 If you like to try the website out or contribut to the project, 
 Before you execute this project make sure you insert values in the database. 
 
-Copy and execute in maridb in a new database named website.
+Copy and execute in maridb.
 
-```-- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Värd: localhost
--- Tid vid skapande: 11 jan 2022 kl 11:14
--- Serverversion: 10.4.21-MariaDB
--- PHP-version: 8.0.13
+```
+-- MySQL Workbench Forward Engineering
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema website
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema website
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `website` DEFAULT CHARACTER SET utf8 ;
+USE `website` ;
+
+-- -----------------------------------------------------
+-- Table `website`.`customer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `website`.`customer` (
+  `idcustomer` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `address` VARCHAR(45) NULL,
+  `zipcode` VARCHAR(45) NULL,
+  `state` VARCHAR(45) NULL,
+  `phonenumber` VARCHAR(45) NULL,
+  PRIMARY KEY (`idcustomer`))
+ENGINE = InnoDB;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Databas: `website`
---
-
---
--- Tabellstruktur `customer`
---
-
-CREATE TABLE `customer` (
-  `idcustomer` int(11) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `address` varchar(45) DEFAULT NULL,
-  `zipcode` varchar(45) DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL,
-  `phonenumber` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Tabellstruktur `orders`
---
-
-CREATE TABLE `orders` (
-  `idorder` int(11) NOT NULL,
-  `customer_idcustomer` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `totalprice` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Tabellstruktur `order_item`
---
-
-CREATE TABLE `order_item` (
-  `products_idproducts` int(11) NOT NULL,
-  `order_idorder` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Tabellstruktur `products`
---
-
-CREATE TABLE `products` (
-  `idproducts` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `image` tinytext NOT NULL,
-  `price` decimal(5,2) NOT NULL,
-  `category` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumpning av Data i tabell `products`
---
+-- -----------------------------------------------------
+-- Table `website`.`products`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `website`.`products` (
+  `idproducts` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `image` TEXT(80) NOT NULL,
+  `price` DECIMAL(5,2) NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idproducts`))
+ENGINE = InnoDB;
 
 INSERT INTO `products` (`idproducts`, `name`, `image`, `price`, `category`) VALUES
 (1, 'WEfit-Prework', 'products_images/WEfit-Prework.png', '299.00', 'supplement'),
@@ -123,83 +93,51 @@ INSERT INTO `products` (`idproducts`, `name`, `image`, `price`, `category`) VALU
 (15, 'WEfit Shorts', 'products_images/WEfit-shorts.png', '499.00', 'clothes'),
 (16, 'WEfit Hoodie', 'products_images/WEfit-Hoodie.png', '599.00', 'clothes');
 
---
--- Index för dumpade tabeller
---
+-- -----------------------------------------------------
+-- Table `website`.`orders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `website`.`orders` (
+  `idorder` INT NOT NULL AUTO_INCREMENT,
+  `customer_idcustomer` INT NOT NULL,
+  `date` TIMESTAMP NOT NULL,
+  `totalprice` INT NULL,
+  PRIMARY KEY (`idorder`, `customer_idcustomer`),
+  INDEX `fk_order_customer1_idx` (`customer_idcustomer` ASC),
+  CONSTRAINT `fk_order_customer1`
+    FOREIGN KEY (`customer_idcustomer`)
+    REFERENCES `website`.`customer` (`idcustomer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Index för tabell `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`idcustomer`);
 
---
--- Index för tabell `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`idorder`,`customer_idcustomer`),
-  ADD KEY `fk_order_customer1_idx` (`customer_idcustomer`);
+-- -----------------------------------------------------
+-- Table `website`.`order_item`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `website`.`order_item` (
+  `products_idproducts` INT NOT NULL,
+  `order_idorder` INT NOT NULL,
+  `quantity` INT NULL,
+  PRIMARY KEY (`products_idproducts`, `order_idorder`),
+  INDEX `fk_products_has_order_order1_idx` (`order_idorder` ASC),
+  INDEX `fk_products_has_order_products_idx` (`products_idproducts` ASC),
+  CONSTRAINT `fk_products_has_order_products`
+    FOREIGN KEY (`products_idproducts`)
+    REFERENCES `website`.`products` (`idproducts`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_products_has_order_order1`
+    FOREIGN KEY (`order_idorder`)
+    REFERENCES `website`.`orders` (`idorder`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Index för tabell `order_item`
---
-ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`products_idproducts`,`order_idorder`),
-  ADD KEY `fk_products_has_order_order1_idx` (`order_idorder`),
-  ADD KEY `fk_products_has_order_products_idx` (`products_idproducts`);
 
---
--- Index för tabell `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`idproducts`);
-
---
--- AUTO_INCREMENT för dumpade tabeller
---
-
---
--- AUTO_INCREMENT för tabell `customer`
---
-ALTER TABLE `customer`
-  MODIFY `idcustomer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT för tabell `orders`
---
-ALTER TABLE `orders`
-  MODIFY `idorder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT för tabell `products`
---
-ALTER TABLE `products`
-  MODIFY `idproducts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- Restriktioner för dumpade tabeller
---
-
---
--- Restriktioner för tabell `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `fk_order_customer1` FOREIGN KEY (`customer_idcustomer`) REFERENCES `customer` (`idcustomer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Restriktioner för tabell `order_item`
---
-ALTER TABLE `order_item`
-  ADD CONSTRAINT `fk_products_has_order_order1` FOREIGN KEY (`order_idorder`) REFERENCES `orders` (`idorder`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_products_has_order_products` FOREIGN KEY (`products_idproducts`) REFERENCES `products` (`idproducts`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ```
-
-
 
 More about how to contribute below. :fire:
 

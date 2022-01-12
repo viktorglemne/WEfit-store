@@ -13,11 +13,11 @@
             <div class="item text">
                 <h2>--name--</h2>
                 <h4>--quantity-- st</h4>
-                <button id="up-down" type="submit" name="decrease">-</button>
-                <button id="up-down" type="submit" name="increase">+</button>
+                <button class="up-down" type="submit" name="decrease">-</button>
+                <button class="up-down" type="submit" name="increase">+</button>
                 <input type="hidden" name="id" value="--id--">
                 <br>
-                <button id="delete" type="submit" name="remove"><img src="./content_images/svg_icon/trash-can.svg"
+                <button class="delete" type="submit" name="remove"><img src="./content_images/svg_icon/trash-can.svg"
                         alt="delete">Ta bort</button>
             </div>
             <div class="item price">
@@ -57,11 +57,11 @@
         <!--===explode===-->
         <form action="order.php" method="POST">
             <input type="hidden" name="total-price" value="--total--">
-            <button class="sub_button" type="submit">Lägg Order</button></a>
+
+            <input class="sub_button" type="submit" value="Lägg Order!" name="skicka">
         </form>
         <!--===explode===-->
     </div>
-</div>
 <!--===explode===-->
 </div>
 <div class="empty_container">

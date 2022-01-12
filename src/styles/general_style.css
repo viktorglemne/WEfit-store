@@ -61,7 +61,7 @@ button {
   cursor: pointer;
 }
 
-#up-down {
+.up-down {
   background-color: #ffffff;
   border: none;
   border-radius: 50%;
@@ -78,19 +78,19 @@ button {
   cursor: pointer;
 }
 
-#up-down[name="decrease"]:hover {
+.up-down[name="decrease"]:hover {
   background-color: #ff8888;
   transition: 0.3s;
   transform: scale(1.1);
 }
 
-#up-down[name="increase"]:hover {
+.up-down[name="increase"]:hover {
   background-color: #a8ffac;
   transition: 0.3s;
   transform: scale(1.1);
 }
 
-#delete {
+.delete {
   background: none;
   color: inherit;
   border: none;
@@ -100,13 +100,13 @@ button {
   outline: inherit;
 }
 
-#delete:hover {
+.delete:hover {
   filter: invert(31%) sepia(7%) saturate(0%) hue-rotate(134deg) brightness(98%) contrast(76%);
   transition: 0.3s;
   transform: scale(1.05);
 }
 
-#button-upload {
+.button-upload {
   padding: 10px;
   font-size: 0.8rem;
 }
@@ -132,10 +132,6 @@ button {
   background: #004099ef;
   transform: scale(1.01);
 }
-
-/* input[type="file"] {
-  display: none;
-} */
 
 
 .sub_button {

@@ -50,6 +50,7 @@
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
     border: none;
     cursor: pointer;
+    /* same appearance in all browser correct */
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
@@ -132,7 +133,6 @@ caption {
 }
 
 .profile img {
-    border: 1 solid black;
     margin: 1rem;
     width: 4rem;
 }

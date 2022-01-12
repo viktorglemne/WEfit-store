@@ -34,7 +34,6 @@ try {
         echo $html_pieces[0];
         echo $html_pieces[1];
     } elseif (isset($USER)) {
-        // $html_pieces[2] = str_replace('default-pic.svg', $image, $html_pieces[2]);
         echo $html_pieces[2];
         // query a statment to fetch data from database
         $stmt = $pdo->prepare("SELECT * FROM `orders` WHERE `customer_idcustomer` = '$USER_ID';");

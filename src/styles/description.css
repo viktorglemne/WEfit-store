@@ -62,20 +62,19 @@
     text-decoration: none;
 }
 
-.post button {
+.post_button {
     background-color: #000000;
     border: none;
     color: white;
     width: 75%;
     height: 42px;
-    align-items: right;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 
-.post:hover button {
+.post_button:hover {
     background-color: #222222;
     cursor: pointer;
 }

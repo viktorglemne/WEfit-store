@@ -101,8 +101,10 @@ if (isset($_SESSION['cart'])) {
         echo $tmp2;
         $html_pieces[5] = str_replace('--total--', $totalPrice, $html_pieces[5]);
         echo $html_pieces[5];
+        // one div elemnet
+        echo $html_pieces[6];
     
-        // else if user session not been set then display login form
+    // else if user session not been set then display login form
     } else {
         // sets content from html documnet in varaible
         $html_login = file_get_contents("html/login.html");
@@ -115,8 +117,8 @@ if (isset($_SESSION['cart'])) {
 
         // Displays content from first split of html documnet
         echo $tmp3;
-        echo $html_pieces[6];
     }
+    // one div elemnet
     echo $html_pieces[6];
 } else {
     echo $html_pieces[7];
